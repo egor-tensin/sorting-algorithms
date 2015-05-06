@@ -1,0 +1,16 @@
+<h4>About the project</h4>
+<p>Getting the hang out of the sorting algorithms. Feel free to contribute or contact me.</p>
+<div class="list-group" style="max-width: 400px;">
+  <a class="list-group-item" href="//github.com/egor-tensin/sorting_algorithms"><span class="glyphicon glyphicon-home"></span>&nbsp;GitHub repository</a>
+  <a class="list-group-item" href="mailto:Egor.Tensin@gmail.com"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Egor.Tensin@gmail.com</a>
+</div>
+<h4>Latest posts</h4>
+{% if site.posts.size == 0 %}
+  <p>Sorry, there're no posts yet.</p>
+{% else %}
+  <div class="list-group">
+  {% for post in site.posts limit: 5 %}
+    <a class="list-group-item" href="{{ site.baseurl }}{{ post.url }}"><span class="badge"><span class="glyphicon glyphicon-time"></span>&nbsp;{{ post.date | date_to_string }}</span><span class="glyphicon glyphicon-file"></span>&nbsp;{{ post.title }}</a>
+  {% endfor %}
+  </div>
+{% endif %}

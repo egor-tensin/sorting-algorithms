@@ -1,0 +1,20 @@
+---
+title: Posts
+layout: posts
+group: "navigation"
+---
+{% if site.posts.size == 0 %}
+  <h3>Sorry, there're no posts yet.</h3>
+  <p class="text-muted">But I've made quite a few <a href="{{ site.baseurl }}/plots.html">plots</a> which you might want to check out.</p>
+  <hr/>
+{% else %}
+  {% for post in paginator.posts %}
+    <h2>{{ post.title }}</h2>
+    <p class="text-muted"><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date_to_long_string }}</p>
+    <a class="btn btn-primary" href="{{ site.baseurl }}{{ post.url }}">Read More&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
+    <hr/>
+  {% endfor %}
+  <div class="text-center">
+    {% include pagination.html %}
+  </div>
+{% endif %}
