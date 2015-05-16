@@ -7,18 +7,14 @@
 
     <title>{{ page.title }}</title>
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">
+    {% include bootstrap_css.html %}
 
     <link rel="stylesheet" href="{{ site.baseurl }}/css/footer.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/misc.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/plots.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.js"></script>
-      <script src="//oss.maxcdn.com/respond/1.4.2/respond.js"></script>
-    <![endif]-->
+    {% include ie_compat.html %}
   </head>
   <body>
     <script src="{{ site.baseurl }}/js/common.js"></script>
