@@ -19,44 +19,26 @@ in the project's root directory.
 
 To run a local web server, run
 
-    bundle exec jekyll serve --baseurl '' --watch --drafts
+    bundle exec jekyll serve --watch --drafts --config _config.yml,_config_dev.yml
 
 from the project's root directory.
 You can then review your changes at http://localhost:4000/.
 
-To exclude the comments section, include the `_config-exclude-comments.yml` configuration file using
-
-    bundle exec jekyll serve --baseurl '' --watch --drafts --config _config.yml,_config-exclude-comments.yml
-
 Please note that the support for `--watch`ing for modification on Windows is kind of iffy at the moment of writing.
 One possible workaround is to add `--force_polling` to `jekyll`s options:
 
-    bundle exec jekyll serve --baseurl '' --watch --force_polling --drafts --config _config.yml,_config-exclude-comments.yml
+    bundle exec jekyll serve --watch --force_polling --drafts --config _config.yml,_config_dev.yml
 
 It might still not work though, so you might end up having to re-run `jekyll` manually.
 For details, refer to http://jekyll-windows.juthilo.com/4-wdm-gem/.
 
-I'm also using the `rouge` gem for syntax highlighting during development instead of [Pygments](http://pygments.org/).
-The reason for this was that Pygments required Python 2 to be installed, while I'm trying to switch to Python 3 completely.
-The downside is that at the moment of writing GitHub Pages only supported Pygments, so I had to include a separate configuration file `_config-rouge.yml` during development.
+Note that `_config_dev.yml` is included to rewrite some of the `site` fields from `_config.yml` during development.
+In particular, it
 
-To sum up, on Linux use
-
-    bundle exec jekyll serve \
-        --baseurl '' \
-        --watch \
-        --drafts \
-        --config _config.yml,_config-exclude-comments.yml,_config-rouge.yml
-
-and on Windows (hoping for the best) use
-
-    bundle exec jekyll serve ^
-        --baseurl '' ^
-        --watch --force_polling ^
-        --drafts ^
-        --config _config.yml,_config-exclude-comments.yml,_config-rouge.yml
-
-to run a local web server.
+* sets `minified_externals` to `false` so that the properly formatted versions of external CSS stylesheets and JavaScript files are included instead of the `min`ified versions,
+* sets `include_comments` to `false` to exclude the Disqus comments section from the posts,
+* opts for the `rouge` gem for syntax highlighting instead of the default [Pygments](http://pygments.org/),
+* sets `baseurl` to an empty string, pretending the website access from the root directory of a domain instead of from `sorting_algorithms/`.
 
 ## Licensing
 
