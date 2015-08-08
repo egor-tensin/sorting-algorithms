@@ -10,8 +10,17 @@ group: "navigation"
 {% else %}
   {% for post in paginator.posts %}
     <h2>{{ post.title }}</h2>
-    <p class="text-muted"><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date_to_long_string }}</p>
-    <a class="btn btn-primary" href="{{ site.baseurl }}{{ post.url }}">Read More&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
+    {{ post.excerpt }}
+    <div style="display: table; width: 100%;">
+      <div style="display: table-row;">
+        <div style="display: table-cell;">
+          <a class="btn btn-primary" href="{{ site.baseurl }}{{ post.url }}">Read More&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+        <div class="text-muted" style="text-align: right; display: table-cell;">
+          &nbsp;<span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date_to_long_string }}
+        </div>
+      </div>
+    </div>
     <hr/>
   {% endfor %}
   <div class="text-center">
