@@ -41,9 +41,7 @@ var plotsUrl = 'https://github.com/{userName}/{repoName}/raw/master/plots/'.form
 
 var previewsPath = '{{ site.baseurl }}/img/previews/';
 
-function Algorithm(codename, name, briefName,
-                   minLength, maxLength,
-                   repetitions, complexity) {
+function Algorithm(codename, name, briefName, minLength, maxLength, repetitions, complexity) {
   this.codename = codename;
   this.name = name;
   this.briefName = briefName;
@@ -103,9 +101,11 @@ Algorithm.prototype.buildPlotCaptionHtml = function(input) {
 <strong>{name}</strong><br/>\n\
 <strong>Input:</strong> {input}<br/>\n\
 <strong>Complexity:</strong> {complexity}<br/>\n\
-</div>\n'.format({name: this.name,
-                  input: input,
-                  complexity: this.getComplexity(input)});
+</div>\n'.format({
+    name: this.name,
+    input: input,
+    complexity: this.getComplexity(input)
+  });
 }
 
 Algorithm.prototype.buildPlotHtml = function(input) {
@@ -117,55 +117,126 @@ Algorithm.prototype.buildPlotHtml = function(input) {
     </a>\n\
     {captionHtml}\n\
   </div>\n\
-</div>\n'.format({previewPath: this.buildPreviewPath(input),
-                  plotUrl: this.buildPlotUrl(input),
-                  captionHtml: this.buildPlotCaptionHtml(input)});
+</div>\n'.format({
+    previewPath: this.buildPreviewPath(input),
+    plotUrl: this.buildPlotUrl(input),
+    captionHtml: this.buildPlotCaptionHtml(input)
+  });
 }
 
 var algorithms = [
-  new Algorithm('bubble', 'Bubble sort', 'Bubble sort', 0, 200,
-                {sorted: 1000, randomized: 100, reversed: 100},
-                {sorted: 'O(<var>n</var>)',
-                 randomized: 'O(<var>n</var><sup>2</sup>)',
-                 reversed: 'O(<var>n</var><sup>2</sup>)'}),
-  new Algorithm('bubble_optimized', 'Optimized bubble sort',
-                '&hellip; optimized', 0, 200,
-                {sorted: 1000, randomized: 100, reversed: 100},
-                {sorted: 'O(<var>n</var>)',
-                 randomized: 'O(<var>n</var><sup>2</sup>)',
-                 reversed: 'O(<var>n</var><sup>2</sup>)'}),
-  new Algorithm('heap', 'Heapsort', 'Heapsort', 0, 200,
-                100, 'O(<var>n</var> log <var>n</var>)'),
-  new Algorithm('insertion', 'Insertion sort', 'Insertion sort', 0, 200,
-                {sorted: 1000, randomized: 100, reversed: 100},
-                {sorted: 'O(<var>n</var>)',
-                 randomized: 'O(<var>n</var><sup>2</sup>)',
-                 reversed: 'O(<var>n</var><sup>2</sup>)'}),
-  new Algorithm('merge', 'Merge sort', 'Merge sort', 0, 200,
-                100, 'O(<var>n</var> log <var>n</var>)'),
-  new Algorithm('quick_first', 'Quicksort (first element as pivot)',
-                'Quicksort (first element as pivot)', 0, 200,
-                100, {sorted: 'O(<var>n</var><sup>2</sup>)',
-                      randomized: 'O(<var>n</var> log <var>n</var>)',
-                      reversed: 'O(<var>n</var><sup>2</sup>)'}),
-  new Algorithm('quick_second', 'Quicksort (second element as pivot)',
-                '&hellip; second element&hellip;', 0, 200,
-                100, {sorted: 'O(<var>n</var><sup>2</sup>)',
-                      randomized: 'O(<var>n</var> log <var>n</var>)',
-                      reversed: 'O(<var>n</var><sup>2</sup>)'}),
-  new Algorithm('quick_middle', 'Quicksort (middle element as pivot)',
-                '&hellip; middle element&hellip;', 0, 200,
-                100, 'O(<var>n</var> log <var>n</var>)'),
-  new Algorithm('quick_last', 'Quicksort (last element as pivot)',
-                '&hellip; last element&hellip;', 0, 200,
-                100, {sorted: 'O(<var>n</var><sup>2</sup>)',
-                      randomized: 'O(<var>n</var> log <var>n</var>)',
-                      reversed: 'O(<var>n</var><sup>2</sup>)'}),
-  new Algorithm('quick_random', 'Quicksort (random element as pivot)',
-                '&hellip; random element&hellip;', 0, 200,
-                100, 'O(<var>n</var> log <var>n</var>)'),
-  new Algorithm('selection', 'Selection sort', 'Selection sort', 0, 200,
-                100, 'O(<var>n</var><sup>2</sup>)')
+  new Algorithm(
+    'bubble',
+    'Bubble sort',
+    'Bubble sort',
+    0,
+    200,
+    { sorted: 1000, randomized: 100, reversed: 100 },
+    {
+      sorted: 'O(<var>n</var>)',
+      randomized: 'O(<var>n</var><sup>2</sup>)',
+      reversed: 'O(<var>n</var><sup>2</sup>)'
+    }),
+  new Algorithm(
+    'bubble_optimized',
+    '"Optimized" bubble sort',
+    '&hellip; "optimized"',
+    0,
+    200,
+    { sorted: 1000, randomized: 100, reversed: 100 },
+    {
+      sorted: 'O(<var>n</var>)',
+      randomized: 'O(<var>n</var><sup>2</sup>)',
+      reversed: 'O(<var>n</var><sup>2</sup>)'
+    }),
+  new Algorithm(
+    'heap',
+    'Heapsort',
+    'Heapsort',
+    0,
+    200,
+    100,
+    'O(<var>n</var> log <var>n</var>)'),
+  new Algorithm(
+    'insertion',
+    'Insertion sort',
+    'Insertion sort',
+    0,
+    200,
+    { sorted: 1000, randomized: 100, reversed: 100 },
+    {
+      sorted: 'O(<var>n</var>)',
+      randomized: 'O(<var>n</var><sup>2</sup>)',
+      reversed: 'O(<var>n</var><sup>2</sup>)'
+    }),
+  new Algorithm(
+    'merge',
+    'Merge sort',
+    'Merge sort',
+    0,
+    200,
+    100,
+    'O(<var>n</var> log <var>n</var>)'),
+  new Algorithm(
+    'quick_first',
+    'Quicksort (first element as pivot)',
+    'Quicksort (first element as pivot)',
+    0,
+    200,
+    100,
+    {
+      sorted: 'O(<var>n</var><sup>2</sup>)',
+      randomized: 'O(<var>n</var> log <var>n</var>)',
+      reversed: 'O(<var>n</var><sup>2</sup>)'
+    }),
+  new Algorithm(
+    'quick_second',
+    'Quicksort (second element as pivot)',
+    '&hellip; second element&hellip;',
+    0,
+    200,
+    100,
+    {
+      sorted: 'O(<var>n</var><sup>2</sup>)',
+      randomized: 'O(<var>n</var> log <var>n</var>)',
+      reversed: 'O(<var>n</var><sup>2</sup>)'
+    }),
+  new Algorithm(
+    'quick_middle',
+    'Quicksort (middle element as pivot)',
+    '&hellip; middle element&hellip;',
+    0,
+    200,
+    100,
+    'O(<var>n</var> log <var>n</var>)'),
+  new Algorithm(
+    'quick_last',
+    'Quicksort (last element as pivot)',
+    '&hellip; last element&hellip;',
+    0,
+    200,
+    100,
+    {
+      sorted: 'O(<var>n</var><sup>2</sup>)',
+      randomized: 'O(<var>n</var> log <var>n</var>)',
+      reversed: 'O(<var>n</var><sup>2</sup>)'
+    }),
+  new Algorithm(
+    'quick_random',
+    'Quicksort (random element as pivot)',
+    '&hellip; random element&hellip;',
+    0,
+    200,
+    100,
+    'O(<var>n</var> log <var>n</var>)'),
+  new Algorithm(
+    'selection',
+    'Selection sort',
+    'Selection sort',
+    0,
+    200,
+    100,
+    'O(<var>n</var><sup>2</sup>)')
 ];
 
 function buildPlotsAlgorithm(algorithm) {
@@ -176,11 +247,13 @@ function buildPlotsAlgorithm(algorithm) {
 {sorted}\
 {randomized}\
 {reversed}\n\
-</div>\n'.format({name: algorithm.name,
-                  codename: algorithm.codename,
-                  sorted: algorithm.buildPlotHtml('sorted'),
-                  randomized: algorithm.buildPlotHtml('randomized'),
-                  reversed: algorithm.buildPlotHtml('reversed')});
+</div>\n'.format({
+    name: algorithm.name,
+    codename: algorithm.codename,
+    sorted: algorithm.buildPlotHtml('sorted'),
+    randomized: algorithm.buildPlotHtml('randomized'),
+    reversed: algorithm.buildPlotHtml('reversed')
+  });
 }
 
 function buildPlotsAllAlgorithms() {
@@ -198,11 +271,13 @@ function buildComplexityTableRow(algorithm) {
   <td>{sorted}</td>\n\
   <td>{randomized}</td>\n\
   <td>{reversed}</td>\n\
-</tr>\n'.format({codename: algorithm.codename,
-                 briefName: algorithm.briefName,
-                 sorted: algorithm.getComplexity('sorted'),
-                 randomized: algorithm.getComplexity('randomized'),
-                 reversed: algorithm.getComplexity('reversed')});
+</tr>\n'.format({
+    codename: algorithm.codename,
+    briefName: algorithm.briefName,
+    sorted: algorithm.getComplexity('sorted'),
+    randomized: algorithm.getComplexity('randomized'),
+    reversed: algorithm.getComplexity('reversed')
+  });
 }
 
 function buildComplexityTable() {
