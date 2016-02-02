@@ -47,8 +47,6 @@ In particular, it
   `min`ified versions,
 * sets `include_comments` to `false` to exclude the Disqus comments section
   from the posts,
-* opts for the `rouge` gem for syntax highlighting instead of the default
-  [Pygments](http://pygments.org/),
 * sets `baseurl` to an empty string, pretending the website access from the
   root directory of a domain instead of from `sorting_algorithms/`.
 

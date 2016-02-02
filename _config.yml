@@ -1,4 +1,5 @@
 baseurl: /sorting_algorithms
+gems: [jekyll-paginate]
 paginate: 10
 include_comments: true
 bootstrap_version: 3.3.5
