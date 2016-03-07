@@ -11,9 +11,15 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        {% assign page_list = site.pages %}
-        {% assign group = 'navigation' %}
-        {% include links.html %}
+        {% for node in site.pages %}
+          {% if node.groups contains 'navbar' %}
+            {% if page.url == node.url %}
+              <li class="active"><a href="{{ site.baseurl }}{{ node.url }}" class="active">{{ node.navbar_link }}</a></li>
+            {% else %}
+              <li><a href="{{ site.baseurl }}{{ node.url }}">{{ node.navbar_link }}</a></li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
       </ul>
     </div>
   </div>
