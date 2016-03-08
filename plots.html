@@ -4,6 +4,116 @@ layout: plots
 groups:
   - navbar
 navbar_link: <span class="glyphicon glyphicon-th-large"></span>&nbsp;Plots
+custom_css: plots.css
+plot_kinds:
+  - sorted
+  - randomized
+  - reversed
+plots:
+  - codename: bubble
+    brief_name: Bubble sort
+    display_name: Bubble sort
+    min_length: 0
+    max_length: 200
+    repetitions:
+      sorted: 1000
+      randomized: 100
+      reversed: 100
+    complexity:
+      sorted: O(<var>n</var>)
+      randomized: O(<var>n</var><sup>2</sup>)
+      reversed: O(<var>n</var><sup>2</sup>)
+  - codename: bubble_optimized
+    brief_name: "&hellip; \"optimized\""
+    display_name: "\"Optimized\" bubble sort"
+    min_length: 0
+    max_length: 200
+    repetitions:
+      sorted: 1000
+      randomized: 100
+      reversed: 100
+    complexity:
+      sorted: O(<var>n</var>)
+      randomized: O(<var>n</var><sup>2</sup>)
+      reversed: O(<var>n</var><sup>2</sup>)
+  - codename: heap
+    brief_name: Heapsort
+    display_name: Heapsort
+    min_length: 0
+    max_length: 200
+    repetitions: 100
+    complexity: O(<var>n</var> log <var>n</var>)
+  - codename: insertion
+    brief_name: Insertion sort
+    display_name: Insertion sort
+    min_length: 0
+    max_length: 200
+    repetitions:
+      sorted: 1000
+      randomized: 100
+      reversed: 100
+    complexity:
+      sorted: O(<var>n</var>)
+      randomized: O(<var>n</var><sup>2</sup>)
+      reversed: O(<var>n</var><sup>2</sup>)
+  - codename: merge
+    brief_name: Merge sort
+    display_name: Merge sort
+    min_length: 0
+    max_length: 200
+    repetitions: 100
+    complexity: O(<var>n</var> log <var>n</var>)
+  - codename: quick_first
+    brief_name: Quicksort (first element as pivot)
+    display_name: Quicksort (first element as pivot)
+    min_length: 0
+    max_length: 200
+    repetitions: 100
+    complexity:
+      sorted: O(<var>n</var><sup>2</sup>)
+      randomized: O(<var>n</var> log <var>n</var>)
+      reversed: O(<var>n</var><sup>2</sup>)
+  - codename: quick_second
+    brief_name: "&hellip; second element&hellip;"
+    display_name: Quicksort (second element as pivot)
+    min_length: 0
+    max_length: 200
+    repetitions: 100
+    complexity:
+      sorted: O(<var>n</var><sup>2</sup>)
+      randomized: O(<var>n</var> log <var>n</var>)
+      reversed: O(<var>n</var><sup>2</sup>)
+  - codename: quick_middle
+    brief_name: "&hellip; middle element&hellip;"
+    display_name: Quicksort (middle element as pivot)
+    min_length: 0
+    max_length: 200
+    repetitions: 100
+    complexity: O(<var>n</var> log <var>n</var>)
+  - codename: quick_last
+    brief_name: "&hellip; last element&hellip;"
+    display_name: Quicksort (last element as pivot)
+    min_length: 0
+    max_length: 200
+    repetitions: 100
+    complexity:
+      sorted: O(<var>n</var><sup>2</sup>)
+      randomized: O(<var>n</var> log <var>n</var>)
+      reversed: O(<var>n</var><sup>2</sup>)
+  - codename: quick_random
+    brief_name: "&hellip; random element&hellip;"
+    display_name: Quicksort (random element as pivot)
+    min_length: 0
+    max_length: 200
+    repetitions: 100
+    complexity: O(<var>n</var> log <var>n</var>)
+  - codename: selection
+    brief_name: Selection sort
+    display_name: Selection sort
+    min_length: 0
+    max_length: 200
+    repetitions: 100
+    complexity: O(<var>n</var><sup>2</sup>)
 ---
 <h1>Plots</h1>
 
@@ -28,286 +138,63 @@ navbar_link: <span class="glyphicon glyphicon-th-large"></span>&nbsp;Plots
   </tr>
 </table>
 
-<div id="plots">
-  <p class="text-muted">Javascript-generated plot table is supposed to appear here.</p>
+{% if page.plots and page.plots != empty %}
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="text-center" rowspan="2">Algorithm</th>
+          <th class="text-center" colspan="{{ page.plot_kinds.size }}">Complexity</th>
+        </tr>
+        <tr>
+          {% for kind in page.plot_kinds %}
+            <th class="text-center">{{ kind }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+{% for algorithm in page.plots %}
+<tr>
+  <td><a href="#plots_{{ algorithm.codename }}">{{ algorithm.brief_name }}</a></td>
+  {% for kind in page.plot_kinds %}
+    <td>{% if algorithm.complexity[kind] %}{{ algorithm.complexity[kind] }}{% else %}{{ algorithm.complexity }}{% endif %}</td>
+  {% endfor %}
+</tr>
+{% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
-<script type="text/javascript">
-var userName = 'egor-tensin';
-var repoName = 'sorting_algorithms';
 
-var plotsUrl = 'https://github.com/{userName}/{repoName}/raw/master/plots/'.format({
-  userName: userName,
-  repoName: repoName
-});
+{% for algorithm in page.plots %}
+<a id="plots_{{ algorithm.codename }}"></a>
+<h3>{{ algorithm.display_name }}</h3>
+<div class="row">
+  {% for kind in page.plot_kinds %}
+  {% if algorithm.repetitions[kind] %}
+    {% assign repetitions = algorithm.repetitions[kind] %}
+  {% else %}
+    {% assign repetitions = algorithm.repetitions %}
+  {% endif %}
+  {% capture stem %}{{ algorithm.codename }}_{{ repetitions }}_{{ kind }}_{{ algorithm.min_length }}_{{ algorithm.max_length }}{% endcapture %}
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <a class="thumbnail" href="https://github.com/egor-tensin/sorting_algorithms/raw/master/plots/{{ stem }}.png">
+        <img class="img-responsive" src="{{ site.baseurl }}/img/previews/{{ stem }}.jpg"/>
+      </a>
+      <div class="caption">
+        <strong>{{ algorithm.display_name }}</strong><br/>
+        <strong>Input:</strong> {{ kind }}<br/>
+        <strong>Complexity:</strong> {% if algorithm.complexity[kind] %}{{ algorithm.complexity[kind] }}{% else %}{{ algorithm.complexity }}{% endif %}<br/>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
 
-var previewsPath = '{{ site.baseurl }}/img/previews/';
-
-function Algorithm(codename, name, briefName, minLength, maxLength, repetitions, complexity) {
-  this.codename = codename;
-  this.name = name;
-  this.briefName = briefName;
-  this.minLength = minLength;
-  this.maxLength = maxLength;
-  this.repetitions = repetitions;
-  this.complexity = complexity;
-}
-
-Algorithm.prototype.getRepetitions = function(input) {
-  switch (typeof this.repetitions) {
-    case 'number':
-      return this.repetitions;
-    case 'object':
-      return this.repetitions[input];
-  }
-}
-
-Algorithm.prototype.getComplexity = function(input) {
-  switch (typeof this.complexity) {
-    case 'string':
-      return this.complexity;
-    case 'object':
-      return this.complexity[input];
-  }
-}
-
-Algorithm.prototype.buildPlotStem = function(input) {
-  return '{codename}_{repetitions}_{input}_{minLength}_{maxLength}'.format({
-    codename: this.codename,
-    input: input,
-    repetitions: this.getRepetitions(input),
-    minLength: this.minLength,
-    maxLength: this.maxLength
-  });
-}
-
-Algorithm.prototype.buildPlotFileName = function(input) {
-  return this.buildPlotStem(input) + '.png';
-}
-
-Algorithm.prototype.buildPreviewFileName = function(input) {
-  return this.buildPlotStem(input) + '.jpg';
-}
-
-Algorithm.prototype.buildPlotUrl = function(input) {
-  return plotsUrl + this.buildPlotFileName(input);
-}
-
-Algorithm.prototype.buildPreviewPath = function(input) {
-  return previewsPath + this.buildPreviewFileName(input);
-}
-
-Algorithm.prototype.buildPlotCaptionHtml = function(input) {
-  return '\
-<div class="caption">\n\
-<strong>{name}</strong><br/>\n\
-<strong>Input:</strong> {input}<br/>\n\
-<strong>Complexity:</strong> {complexity}<br/>\n\
-</div>\n'.format({
-    name: this.name,
-    input: input,
-    complexity: this.getComplexity(input)
-  });
-}
-
-Algorithm.prototype.buildPlotHtml = function(input) {
-  return '\
-<div class="col-xs-12 col-sm-6 col-md-4">\n\
-  <div class="thumbnail">\
-    <a class="thumbnail" href="{plotUrl}">\n\
-      <img class="img-responsive" src="{previewPath}"/>\n\
-    </a>\n\
-    {captionHtml}\n\
-  </div>\n\
-</div>\n'.format({
-    previewPath: this.buildPreviewPath(input),
-    plotUrl: this.buildPlotUrl(input),
-    captionHtml: this.buildPlotCaptionHtml(input)
-  });
-}
-
-var algorithms = [
-  new Algorithm(
-    'bubble',
-    'Bubble sort',
-    'Bubble sort',
-    0,
-    200,
-    { sorted: 1000, randomized: 100, reversed: 100 },
-    {
-      sorted: 'O(<var>n</var>)',
-      randomized: 'O(<var>n</var><sup>2</sup>)',
-      reversed: 'O(<var>n</var><sup>2</sup>)'
-    }),
-  new Algorithm(
-    'bubble_optimized',
-    '"Optimized" bubble sort',
-    '&hellip; "optimized"',
-    0,
-    200,
-    { sorted: 1000, randomized: 100, reversed: 100 },
-    {
-      sorted: 'O(<var>n</var>)',
-      randomized: 'O(<var>n</var><sup>2</sup>)',
-      reversed: 'O(<var>n</var><sup>2</sup>)'
-    }),
-  new Algorithm(
-    'heap',
-    'Heapsort',
-    'Heapsort',
-    0,
-    200,
-    100,
-    'O(<var>n</var> log <var>n</var>)'),
-  new Algorithm(
-    'insertion',
-    'Insertion sort',
-    'Insertion sort',
-    0,
-    200,
-    { sorted: 1000, randomized: 100, reversed: 100 },
-    {
-      sorted: 'O(<var>n</var>)',
-      randomized: 'O(<var>n</var><sup>2</sup>)',
-      reversed: 'O(<var>n</var><sup>2</sup>)'
-    }),
-  new Algorithm(
-    'merge',
-    'Merge sort',
-    'Merge sort',
-    0,
-    200,
-    100,
-    'O(<var>n</var> log <var>n</var>)'),
-  new Algorithm(
-    'quick_first',
-    'Quicksort (first element as pivot)',
-    'Quicksort (first element as pivot)',
-    0,
-    200,
-    100,
-    {
-      sorted: 'O(<var>n</var><sup>2</sup>)',
-      randomized: 'O(<var>n</var> log <var>n</var>)',
-      reversed: 'O(<var>n</var><sup>2</sup>)'
-    }),
-  new Algorithm(
-    'quick_second',
-    'Quicksort (second element as pivot)',
-    '&hellip; second element&hellip;',
-    0,
-    200,
-    100,
-    {
-      sorted: 'O(<var>n</var><sup>2</sup>)',
-      randomized: 'O(<var>n</var> log <var>n</var>)',
-      reversed: 'O(<var>n</var><sup>2</sup>)'
-    }),
-  new Algorithm(
-    'quick_middle',
-    'Quicksort (middle element as pivot)',
-    '&hellip; middle element&hellip;',
-    0,
-    200,
-    100,
-    'O(<var>n</var> log <var>n</var>)'),
-  new Algorithm(
-    'quick_last',
-    'Quicksort (last element as pivot)',
-    '&hellip; last element&hellip;',
-    0,
-    200,
-    100,
-    {
-      sorted: 'O(<var>n</var><sup>2</sup>)',
-      randomized: 'O(<var>n</var> log <var>n</var>)',
-      reversed: 'O(<var>n</var><sup>2</sup>)'
-    }),
-  new Algorithm(
-    'quick_random',
-    'Quicksort (random element as pivot)',
-    '&hellip; random element&hellip;',
-    0,
-    200,
-    100,
-    'O(<var>n</var> log <var>n</var>)'),
-  new Algorithm(
-    'selection',
-    'Selection sort',
-    'Selection sort',
-    0,
-    200,
-    100,
-    'O(<var>n</var><sup>2</sup>)')
-];
-
-function buildPlotsAlgorithm(algorithm) {
-  return '\
-<a id="plots_{codename}"></a>\n\
-<h3>{name}</h3>\n\
-<div class="row">\n\
-{sorted}\
-{randomized}\
-{reversed}\n\
-</div>\n'.format({
-    name: algorithm.name,
-    codename: algorithm.codename,
-    sorted: algorithm.buildPlotHtml('sorted'),
-    randomized: algorithm.buildPlotHtml('randomized'),
-    reversed: algorithm.buildPlotHtml('reversed')
-  });
-}
-
-function buildPlotsAllAlgorithms() {
-  var html = '';
-  for (var i = 0; i < algorithms.length; ++i) {
-    html += buildPlotsAlgorithm(algorithms[i]);
-  }
-  return html;
-}
-
-function buildComplexityTableRow(algorithm) {
-  return '\
-<tr>\n\
-  <td><a href="#plots_{codename}">{briefName}</a></td>\n\
-  <td>{sorted}</td>\n\
-  <td>{randomized}</td>\n\
-  <td>{reversed}</td>\n\
-</tr>\n'.format({
-    codename: algorithm.codename,
-    briefName: algorithm.briefName,
-    sorted: algorithm.getComplexity('sorted'),
-    randomized: algorithm.getComplexity('randomized'),
-    reversed: algorithm.getComplexity('reversed')
-  });
-}
-
-function buildComplexityTable() {
-  var html = '\
-<div class="row">\n\
-  <div class="col-xs-12 col-sm-10 col-md-8">\n\
-    <table id="complexity_table" class="table table-bordered table-hover">\n\
-      <thead>\n\
-        <tr>\n\
-          <th class="text-center" rowspan="2">Algorithm</th>\n\
-          <th class="text-center" colspan="3">Complexity</th>\n\
-        </tr>\n\
-        <tr>\n\
-          <th class="text-center">sorted</th>\n\
-          <th class="text-center">randomized</th>\n\
-          <th class="text-center">reversed</th>\n\
-        </tr>\n\
-      </thead>\n\
-      <tbody>\n';
-  for (var i = 0; i < algorithms.length; ++i) {
-    html += buildComplexityTableRow(algorithms[i]);
-  }
-  html += '\
-      </tbody>\n\
-    </table>\n\
-  </div>\n\
-</div>\n';
-  return html;
-}
-
-document.getElementById('plots').innerHTML = buildComplexityTable() + buildPlotsAllAlgorithms();
-</script>
+{% else %}
+<h3>Sorry, there're no plots yet.</h3>
+<hr/>
+{% endif %}

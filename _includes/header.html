@@ -11,8 +11,13 @@
 
     <link rel="stylesheet" href="{{ site.baseurl }}/css/footer.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/misc.css">
-    <link rel="stylesheet" href="{{ site.baseurl }}/css/plots.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
+
+    {% if page.custom_css %}
+      {% for css in page.custom_css %}
+        <link rel="stylesheet" href="{{ site.baseurl }}/css/{{ css }}"/>
+      {% endfor %}
+    {% endif %}
 
     {% include ie_compat.html %}
   </head>
