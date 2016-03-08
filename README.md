@@ -47,7 +47,8 @@ In particular, it
 * sets `include_comments` to `false` to exclude the Disqus comments section
   from the posts,
 * sets `baseurl` to an empty string so that the website can be accessed from
-  local web server's root directory, instead of '/sorting_algorithms'.
+  local web server's root directory (i.e. from http://localhost:4000/ instead
+  of http://localhost:4000/sorting_algorithms/).
 
 ## Accessing via file://
 
