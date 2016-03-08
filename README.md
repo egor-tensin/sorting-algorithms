@@ -8,12 +8,14 @@ https://egor-tensin.github.io/sorting_algorithms/.
 
 [Jekyll](http://jekyllrb.com/) is used to build a set of static HTML pages from
 a collection of templates and resources.
-Jekyll doesn't support Windows, however at the moment of writing one can get it
-to work using the excellent tutorial at http://jekyll-windows.juthilo.com/.
+It might seem like Jekyll doesn't support Windows very well.
+However, at the moment of writing one can get it to work using the excellent
+tutorial at http://jekyll-windows.juthilo.com/.
+I personally had no problems running Jekyll on Windows whatsoever.
 
-I'm using [Bundler](http://bundler.io/) to set up a development environment.
-After the `bundler` gem is installed, project dependencies can be installed by
-running
+I use [Bundler](http://bundler.io/) to manage project's dependencies.
+Make sure you have the `bundler` gem installed; project dependencies can then
+be installed by executing
 
     bundle install
 
@@ -21,22 +23,19 @@ in the project's root directory.
 
 ## Development
 
-To run a local web server, run
+To run a local web server, execute
 
     bundle exec jekyll serve --watch --drafts --config _config.yml,_config_dev.yml
 
-from the project's root directory.
+in the project's root directory.
 You can then review your changes at http://localhost:4000/.
 
-Please note that the support for `--watch`ing for modification on Windows is
-kind of iffy at the moment of writing.
-One possible workaround is to add `--force_polling` to `jekyll`s options:
+If you can't get Jekyll to properly `--watch` for file modifications on
+Windows, try adding `--force_polling` to `jekyll`s options:
 
     bundle exec jekyll serve --watch --force_polling --drafts --config _config.yml,_config_dev.yml
 
-It might still not work though, so you might end up having to re-run `jekyll`
-manually.
-For details, refer to http://jekyll-windows.juthilo.com/4-wdm-gem/.
+It might still not work though, but you can always re-run `jekyll` manually.
 
 Note that `_config_dev.yml` is included to rewrite some of the `site` fields
 from `_config.yml` during development.
@@ -47,8 +46,16 @@ In particular, it
   `min`ified versions,
 * sets `include_comments` to `false` to exclude the Disqus comments section
   from the posts,
-* sets `baseurl` to an empty string, pretending the website access from the
-  root directory of a domain instead of from `sorting_algorithms/`.
+* sets `baseurl` to an empty string so that the website can be accessed from
+  local web server's root directory, instead of '/sorting_algorithms'.
+
+## Accessing via file://
+
+Jekyll doesn't provide native support for generating a static website which can
+be viewed without a web server.
+One easy workaround might be to `wget` the website and convert the links:
+
+    wget -k -r http://localhost:4000/
 
 ## Licensing
 
