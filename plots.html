@@ -117,9 +117,21 @@ plots:
 ---
 <h1>Plots</h1>
 
-<p>The platform under which the plots were produced was:</p>
-
-<table class="table table-bordered reasonable-width">
+<div class="row">
+<div class="col-xs-12 col-sm-9 col-md-6">
+<p class="text-muted">The goals of this "project" include a) familiarizing
+myself with a few sorting algorithms by examining their (possibly, simplified)
+implementations and b) studying the way algorithm's running time changes in
+relation to the length of its input (a.k.a. identifying its time
+complexity).</p>
+<p class="text-muted">A simple way to visualize the way algorithm's running
+time changes would be to make appropriate measurements and plot them on a nice
+graph.
+The results of course are highly dependent on the hardware used, while the
+graph's look depends on the software used for rendering.</p>
+<p class="text-muted">Both the hardware &amp; the software that were used to
+produce the plots are listed below.</p>
+<table class="table table-bordered">
   <tr>
     <th>CPU</th>
     <td><a href="http://ark.intel.com/products/58917">Intel Atom N2800</a></td>
@@ -137,10 +149,26 @@ plots:
     <td>1.4.0</td>
   </tr>
 </table>
+</div>
+</div>
 
 {% if page.plots and page.plots != empty %}
 <div class="row">
   <div class="col-xs-12 col-sm-10 col-md-8">
+    <p>The table &amp; plots below are just an attempt to nicely lay out the
+data generated using the code from the project repository's <code>master</code>
+branch.
+Visit <a href="https://github.com/egor-tensin/sorting_algorithms/">https://github.com/egor-tensin/sorting_algorithms/</a> for more details.</p>
+
+    <p>In short, each of the implemented algorithms was provided with three
+input sequences:</p>
+<ul>
+  <li>a list of n consecutive numbers sorted in ascending order ("sorted" input),</li>
+  <li>&hellip; in descending order ("reversed" input),</li>
+  <li>&hellip; in random order ("randomized" input).</li>
+</ul>
+    <p>Use the table below to quickly navigate to the plots for the
+corresponding algorithm.</p>
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
@@ -195,6 +223,6 @@ plots:
 {% endfor %}
 
 {% else %}
-<h3>Sorry, there're no plots yet.</h3>
+<h3>Sorry, not plots have been added yet.</h3>
 <hr/>
 {% endif %}
