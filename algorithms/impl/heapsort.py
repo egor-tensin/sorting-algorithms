@@ -5,11 +5,11 @@
 # Disclaimer: implemented in the most literate way.
 
 def heapsort(xs):
-    heapify(xs)
+    _heapify(xs)
     first, last = 0, len(xs) - 1
     for end in range(last, first, -1):
         xs[end], xs[first] = xs[first], xs[end]
-        siftdown(xs, first, end - 1)
+        _siftdown(xs, first, end - 1)
     return xs
 
 # In a heap stored in a zero-based array,
@@ -26,13 +26,13 @@ def _get_left_child(node):
 def _get_right_child(node):
     return node * 2 + 2
 
-def heapify(xs):
+def _heapify(xs):
     last = len(xs) - 1
     first_parent, last_parent = 0, _get_parent(last)
     for parent in range(last_parent, first_parent - 1, -1):
-        siftdown(xs, parent, last)
+        _siftdown(xs, parent, last)
 
-def siftdown(xs, start, end):
+def _siftdown(xs, start, end):
     root = start
     while True:
         # We swap if there is at least one child
@@ -52,3 +52,8 @@ def siftdown(xs, start, end):
 if __name__ == '__main__':
     import sys
     print(heapsort(list(map(int, sys.argv[1:]))))
+else:
+    from algorithms.algorithm import SortingAlgorithm
+    _ALGORITHMS = [
+        SortingAlgorithm('heapsort', 'Heapsort', heapsort),
+    ]

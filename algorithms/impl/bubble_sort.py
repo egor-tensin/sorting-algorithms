@@ -31,3 +31,9 @@ if __name__ == '__main__':
     xs = list(map(int, sys.argv[1:]))
     print(bubble_sort(list(xs)))
     print(bubble_sort_optimized(list(xs)))
+else:
+    from algorithms.algorithm import SortingAlgorithm
+    _ALGORITHMS = [
+        SortingAlgorithm('bubble_sort', 'Bubble sort', bubble_sort),
+        SortingAlgorithm('bubble_sort_optimized', 'Bubble sort (optimized)', bubble_sort_optimized),
+    ]

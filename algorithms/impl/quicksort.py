@@ -63,3 +63,12 @@ if __name__ == '__main__':
     print(quicksort_middle(list(xs)))
     print(quicksort_last(list(xs)))
     print(quicksort_random(list(xs)))
+else:
+    from algorithms.algorithm import SortingAlgorithm
+    _ALGORITHMS = [
+        SortingAlgorithm('quicksort_first', 'Quicksort (first element as pivot)', quicksort_first),
+        SortingAlgorithm('quicksort_second', 'Quicksort (second element as pivot)', quicksort_second),
+        SortingAlgorithm('quicksort_middle', 'Quicksort (middle element as pivot)', quicksort_middle),
+        SortingAlgorithm('quicksort_last', 'Quicksort (last element as pivot)', quicksort_last),
+        SortingAlgorithm('quicksort_random', 'Quicksort (random element as pivot)', quicksort_random),
+    ]

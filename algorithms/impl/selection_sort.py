@@ -15,3 +15,8 @@ def selection_sort(xs):
 if __name__ == '__main__':
     import sys
     print(selection_sort(list(map(int, sys.argv[1:]))))
+else:
+    from algorithms.algorithm import SortingAlgorithm
+    _ALGORITHMS = [
+        SortingAlgorithm('selection', 'Selection sort', selection_sort),
+    ]

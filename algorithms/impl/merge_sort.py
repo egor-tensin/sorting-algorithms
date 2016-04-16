@@ -27,3 +27,8 @@ def merge_sort(xs):
 if __name__ == '__main__':
     import sys
     print(merge_sort(list(map(int, sys.argv[1:]))))
+else:
+    from algorithms.algorithm import SortingAlgorithm
+    _ALGORITHMS = [
+        SortingAlgorithm('merge_sort', 'Merge sort', merge_sort),
+    ]
