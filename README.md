@@ -15,7 +15,8 @@ Currently the following algorithms are implemented:
 * insertion sort (`insertion_sort.py`),
 * merge sort (`merge_sort.py`),
 * quicksort (`quicksort.py`),
-* selection sort (`selection_sort.py`).
+* selection sort (`selection_sort.py`),
+* calculating the median of a list (`median.py`).
 
 You can test each of the algorithms above by passing a sequence of integer
 numbers to the corresponding script:
