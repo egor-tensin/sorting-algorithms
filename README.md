@@ -79,7 +79,7 @@ For example, on Windows 8.1 I managed to produce some very nice plots by
 booting into Safe Mode and running the scripts with a higher priority while
 also setting their CPU affinity:
 
-    start /affinity 1 /realtime calc_mean.py
+    start /affinity 1 /realtime plot.py ...
 
 ## Licensing
 
