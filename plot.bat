@@ -4,7 +4,7 @@
 
 @setlocal enabledelayedexpansion
 
-@set DEFAULT_REPETITIONS=100
+@set DEFAULT_ITERATIONS=100
 @set DEFAULT_MIN=0
 @set DEFAULT_MAX=200
 
@@ -12,9 +12,9 @@
 @set algorithm=%1
 
 @if not E%2 == E (
-  set repetitions=%2
+  set iterations=%2
 ) else (
-  set repetitions=%DEFAULT_REPETITIONS%
+  set iterations=%DEFAULT_ITERATIONS%
 )
 @if not E%3 == E (
   set min=%3
@@ -27,18 +27,18 @@
   set max=%DEFAULT_MAX%
 )
 
-plot.py -l "%algorithm%" -a "%min%" -b "%max%" -r "%repetitions%" ^
-    -i sorted     -o "%algorithm%_%repetitions%_sorted_%min%_%max%.png" ^
+plot.py -l "%algorithm%" -a "%min%" -b "%max%" -r "%iterations%" ^
+    -i ascending -o "%algorithm%_%iterations%_ascending_%min%_%max%.png" ^
     || exit /b !errorlevel!
-plot.py -l "%algorithm%" -a "%min%" -b "%max%" -r "%repetitions%" ^
-    -i randomized -o "%algorithm%_%repetitions%_randomized_%min%_%max%.png" ^
+plot.py -l "%algorithm%" -a "%min%" -b "%max%" -r "%iterations%" ^
+    -i random -o "%algorithm%_%iterations%_random_%min%_%max%.png" ^
     || exit /b !errorlevel!
-plot.py -l "%algorithm%" -a "%min%" -b "%max%" -r "%repetitions%" ^
-    -i reversed   -o "%algorithm%_%repetitions%_reversed_%min%_%max%.png" ^
+plot.py -l "%algorithm%" -a "%min%" -b "%max%" -r "%iterations%" ^
+    -i descending -o "%algorithm%_%iterations%_descending_%min%_%max%.png" ^
     || exit /b !errorlevel!
 
 @exit /b
 
 :print_usage:
-@echo Usage: %0 ALGORITHM [REPETITIONS=%DEFAULT_REPETITIONS% [MIN=%DEFAULT_MIN% [MAX=%DEFAULT_MAX%]]]
+@echo Usage: %0 ALGORITHM [ITERATIONS=%DEFAULT_ITERATIONS% [MIN=%DEFAULT_MIN% [MAX=%DEFAULT_MAX%]]]
 @exit /b 1

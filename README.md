@@ -65,9 +65,9 @@ below.
 **matplotlib** | 1.5.1                                                                                                      |
 
 Each of the implemented algorithms was provided with three input sequences:
-* a list of *n* consecutive numbers sorted in ascending order ("sorted" input),
-* ... in descending order ("reversed" input),
-* ... in random order ("randomized" input).
+* a list of *n* consecutive numbers sorted in ascending order,
+* ... in descending order,
+* ... in random order.
 
 You can generate the plots using `plot.py`.
 Consult the output of `plot.py -h` to learn how to use the script.
