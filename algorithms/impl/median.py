@@ -2,6 +2,8 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
+from algorithms.impl.quicksort import quicksort_random
+
 from heapq import *
 
 def calc_median_heaps(xs):
@@ -31,7 +33,7 @@ def calc_median_heaps(xs):
 def calc_median_sort_first(xs):
     if not xs:
         return 0.0
-    xs.sort()
+    quicksort_random(xs)
     if len(xs) % 2:
         return xs[len(xs) // 2]
     else:
