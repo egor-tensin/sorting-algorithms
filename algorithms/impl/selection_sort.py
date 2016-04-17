@@ -18,5 +18,5 @@ if __name__ == '__main__':
 else:
     from algorithms.algorithm import SortingAlgorithm
     _ALGORITHMS = [
-        SortingAlgorithm('selection', 'Selection sort', selection_sort),
+        SortingAlgorithm('selection_sort', 'Selection sort', selection_sort),
     ]
