@@ -5,114 +5,108 @@ groups:
   - navbar
 navbar_link: <span class="glyphicon glyphicon-th-large"></span>&nbsp;Plots
 custom_css: plots.css
-plot_kinds:
-  - sorted
-  - randomized
-  - reversed
+input_order:
+  - ascending
+  - random
+  - descending
 plots:
-  - codename: bubble
+  - codename: bubble_sort
     brief_name: Bubble sort
     display_name: Bubble sort
     min_length: 0
     max_length: 200
-    repetitions:
-      sorted: 1000
-      randomized: 100
-      reversed: 100
+    iterations: 100
     complexity:
-      sorted: O(<var>n</var>)
-      randomized: O(<var>n</var><sup>2</sup>)
-      reversed: O(<var>n</var><sup>2</sup>)
-  - codename: bubble_optimized
+      ascending: O(<var>n</var>)
+      random: O(<var>n</var><sup>2</sup>)
+      descending: O(<var>n</var><sup>2</sup>)
+  - codename: bubble_sort_optimized
     brief_name: "&hellip; \"optimized\""
     display_name: "\"Optimized\" bubble sort"
     min_length: 0
     max_length: 200
-    repetitions:
-      sorted: 1000
-      randomized: 100
-      reversed: 100
+    iterations: 100
     complexity:
-      sorted: O(<var>n</var>)
-      randomized: O(<var>n</var><sup>2</sup>)
-      reversed: O(<var>n</var><sup>2</sup>)
-  - codename: heap
+      ascending: O(<var>n</var>)
+      random: O(<var>n</var><sup>2</sup>)
+      descending: O(<var>n</var><sup>2</sup>)
+  - codename: heapsort
     brief_name: Heapsort
     display_name: Heapsort
     min_length: 0
     max_length: 200
-    repetitions: 100
+    iterations: 100
     complexity: O(<var>n</var> log <var>n</var>)
-  - codename: insertion
+  - codename: insertion_sort
     brief_name: Insertion sort
     display_name: Insertion sort
     min_length: 0
     max_length: 200
-    repetitions:
-      sorted: 1000
-      randomized: 100
-      reversed: 100
+    iterations:
+      ascending: 1000
+      random: 100
+      descending: 100
     complexity:
-      sorted: O(<var>n</var>)
-      randomized: O(<var>n</var><sup>2</sup>)
-      reversed: O(<var>n</var><sup>2</sup>)
-  - codename: merge
+      ascending: O(<var>n</var>)
+      random: O(<var>n</var><sup>2</sup>)
+      descending: O(<var>n</var><sup>2</sup>)
+  - codename: merge_sort
     brief_name: Merge sort
     display_name: Merge sort
     min_length: 0
     max_length: 200
-    repetitions: 100
+    iterations: 1000
     complexity: O(<var>n</var> log <var>n</var>)
-  - codename: quick_first
+  - codename: quicksort_first
     brief_name: Quicksort (first element as pivot)
     display_name: Quicksort (first element as pivot)
     min_length: 0
     max_length: 200
-    repetitions: 100
+    iterations: 100
     complexity:
-      sorted: O(<var>n</var><sup>2</sup>)
-      randomized: O(<var>n</var> log <var>n</var>)
-      reversed: O(<var>n</var><sup>2</sup>)
-  - codename: quick_second
+      ascending: O(<var>n</var><sup>2</sup>)
+      random: O(<var>n</var> log <var>n</var>)
+      descending: O(<var>n</var><sup>2</sup>)
+  - codename: quicksort_second
     brief_name: "&hellip; second element&hellip;"
     display_name: Quicksort (second element as pivot)
     min_length: 0
     max_length: 200
-    repetitions: 100
+    iterations: 100
     complexity:
-      sorted: O(<var>n</var><sup>2</sup>)
-      randomized: O(<var>n</var> log <var>n</var>)
-      reversed: O(<var>n</var><sup>2</sup>)
-  - codename: quick_middle
+      ascending: O(<var>n</var><sup>2</sup>)
+      random: O(<var>n</var> log <var>n</var>)
+      descending: O(<var>n</var><sup>2</sup>)
+  - codename: quicksort_middle
     brief_name: "&hellip; middle element&hellip;"
     display_name: Quicksort (middle element as pivot)
     min_length: 0
     max_length: 200
-    repetitions: 100
+    iterations: 100
     complexity: O(<var>n</var> log <var>n</var>)
-  - codename: quick_last
+  - codename: quicksort_last
     brief_name: "&hellip; last element&hellip;"
     display_name: Quicksort (last element as pivot)
     min_length: 0
     max_length: 200
-    repetitions: 100
+    iterations: 100
     complexity:
-      sorted: O(<var>n</var><sup>2</sup>)
-      randomized: O(<var>n</var> log <var>n</var>)
-      reversed: O(<var>n</var><sup>2</sup>)
-  - codename: quick_random
+      ascending: O(<var>n</var><sup>2</sup>)
+      random: O(<var>n</var> log <var>n</var>)
+      descending: O(<var>n</var><sup>2</sup>)
+  - codename: quicksort_random
     brief_name: "&hellip; random element&hellip;"
     display_name: Quicksort (random element as pivot)
     min_length: 0
     max_length: 200
-    repetitions: 100
+    iterations: 100
     complexity: O(<var>n</var> log <var>n</var>)
-  - codename: selection
+  - codename: selection_sort
     brief_name: Selection sort
     display_name: Selection sort
     min_length: 0
     max_length: 200
-    repetitions: 100
+    iterations: 100
     complexity: O(<var>n</var><sup>2</sup>)
 ---
 <h1>Plots</h1>
@@ -134,19 +128,19 @@ to produce the plots are listed below.</p>
     <table class="table table-bordered reasonable-width">
       <tr>
         <th>CPU</th>
-        <td><a href="http://ark.intel.com/products/58917">Intel Atom N2800</a></td>
+        <td><a href="http://ark.intel.com/products/84695/Intel-Core-i3-5005U-Processor-3M-Cache-2_00-GHz">Intel Core i3-5005U</a></td>
       </tr>
       <tr>
         <th>OS</th>
-        <td>Windows 7 Professional Service Pack 1</td>
+        <td>Windows 8.1</td>
       </tr>
       <tr>
         <th>Python</th>
-        <td>3.4.1</td>
+        <td>3.5.1</td>
       </tr>
       <tr>
         <th>matplotlib</th>
-        <td>1.4.0</td>
+        <td>1.5.1</td>
       </tr>
     </table>
   </div>
@@ -163,10 +157,9 @@ Visit <a href="https://github.com/egor-tensin/sorting_algorithms/">https://githu
     <p>In short, each of the implemented algorithms was provided with three
 input sequences:</p>
     <ul>
-      <li>a list of n consecutive numbers sorted in ascending order ("sorted"
-input),</li>
-      <li>&hellip; in descending order ("reversed" input),</li>
-      <li>&hellip; in random order ("randomized" input).</li>
+      <li>a list of <var>n</var> consecutive numbers sorted in ascending order,</li>
+      <li>&hellip; in descending order,</li>
+      <li>&hellip; in random order.</li>
     </ul>
     <p>Use the table below to quickly navigate to the plots for the
 corresponding algorithm.</p>
@@ -175,11 +168,11 @@ corresponding algorithm.</p>
       <thead>
         <tr>
           <th class="text-center" rowspan="2">Algorithm</th>
-          <th class="text-center" colspan="{{ page.plot_kinds.size }}">Complexity</th>
+          <th class="text-center" colspan="{{ page.input_order.size }}">Complexity</th>
         </tr>
         <tr>
-          {% for kind in page.plot_kinds %}
-            <th class="text-center">{{ kind }}</th>
+          {% for order in page.input_order %}
+            <th class="text-center">{{ order }}</th>
           {% endfor %}
         </tr>
       </thead>
@@ -187,8 +180,8 @@ corresponding algorithm.</p>
 {% for algorithm in page.plots %}
 <tr>
   <td><a href="#plots_{{ algorithm.codename }}">{{ algorithm.brief_name }}</a></td>
-  {% for kind in page.plot_kinds %}
-    <td>{% if algorithm.complexity[kind] %}{{ algorithm.complexity[kind] }}{% else %}{{ algorithm.complexity }}{% endif %}</td>
+  {% for order in page.input_order %}
+    <td>{% if algorithm.complexity[order] %}{{ algorithm.complexity[order] }}{% else %}{{ algorithm.complexity }}{% endif %}</td>
   {% endfor %}
 </tr>
 {% endfor %}
@@ -201,25 +194,25 @@ corresponding algorithm.</p>
 <a id="plots_{{ algorithm.codename }}"></a>
 <h3>{{ algorithm.display_name }}</h3>
 <div class="row">
-  {% for kind in page.plot_kinds %}
-  {% if algorithm.repetitions[kind] %}
-    {% assign repetitions = algorithm.repetitions[kind] %}
-  {% else %}
-    {% assign repetitions = algorithm.repetitions %}
-  {% endif %}
-  {% capture stem %}{{ algorithm.codename }}_{{ repetitions }}_{{ kind }}_{{ algorithm.min_length }}_{{ algorithm.max_length }}{% endcapture %}
-  <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <a class="thumbnail" href="{{ site.baseurl }}/img/plots/full_size/{{ stem }}.png">
-        <img class="img-responsive" src="{{ site.baseurl }}/img/plots/previews/{{ stem }}.jpg"/>
-      </a>
-      <div class="caption">
-        <strong>{{ algorithm.display_name }}</strong><br/>
-        <strong>Input:</strong> {{ kind }}<br/>
-        <strong>Complexity:</strong> {% if algorithm.complexity[kind] %}{{ algorithm.complexity[kind] }}{% else %}{{ algorithm.complexity }}{% endif %}<br/>
+  {% for order in page.input_order %}
+    {% if algorithm.iterations[order] %}
+      {% assign iterations = algorithm.iterations[order] %}
+    {% else %}
+      {% assign iterations = algorithm.iterations %}
+    {% endif %}
+    {% capture stem %}{{ algorithm.codename }}_{{ iterations }}_{{ order }}_{{ algorithm.min_length }}_{{ algorithm.max_length }}{% endcapture %}
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <a class="thumbnail" href="{{ site.baseurl }}/img/plots/full_size/{{ stem }}.png">
+          <img class="img-responsive" src="{{ site.baseurl }}/img/plots/previews/{{ stem }}.png" alt="{{ algorithm.display_name | escape }}, {{ iterations }} iterations, {{ order }} input"/>
+        </a>
+        <div class="caption">
+          <strong>{{ algorithm.display_name }}</strong><br/>
+          <strong>Input:</strong> {{ order }}<br/>
+          <strong>Complexity:</strong> {% if algorithm.complexity[order] %}{{ algorithm.complexity[order] }}{% else %}{{ algorithm.complexity }}{% endif %}<br/>
+        </div>
       </div>
     </div>
-  </div>
   {% endfor %}
 </div>
 {% endfor %}
