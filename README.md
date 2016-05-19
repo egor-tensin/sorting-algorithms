@@ -2,7 +2,7 @@
 
 Gettting the hang out of (sorting) algorithms.
 Hosted on [GitHub Pages](https://pages.github.com) at
-https://egor-tensin.github.io/sorting_algorithms/.
+https://egor-tensin.github.io/sorting-algorithms/.
 
 ## Algorithms
 
@@ -108,4 +108,4 @@ See LICENSE.txt [[2]](#references) for details.
 ## References
 
 1. http://ark.intel.com/products/84695/Intel-Core-i3-5005U-Processor-3M-Cache-2_00-GHz
-2. https://github.com/egor-tensin/sorting_algorithms/blob/master/LICENSE.txt
+2. https://github.com/egor-tensin/sorting-algorithms/blob/master/LICENSE.txt
