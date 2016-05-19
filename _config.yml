@@ -1,4 +1,4 @@
-baseurl: /sorting_algorithms
+baseurl: /sorting-algorithms
 gems: [jekyll-paginate]
 paginate: 10
 include_comments: true

@@ -1,8 +1,8 @@
 # Sorting algorithms
 
-Getting the hang out of sorting algorithms.
+Getting the hang out of (sorting) algorithms.
 Hosted on [GitHub Pages](https://pages.github.com) at
-https://egor-tensin.github.io/sorting_algorithms/.
+https://egor-tensin.github.io/sorting-algorithms/.
 
 ## Installation
 
@@ -48,7 +48,7 @@ In particular, it
   from the posts,
 * sets `baseurl` to an empty string so that the website can be accessed from
   local web server's root directory (i.e. from http://localhost:4000/ instead
-  of http://localhost:4000/sorting_algorithms/).
+  of http://localhost:4000/sorting-algorithms/).
 
 ## Accessing via file://
 
@@ -56,13 +56,13 @@ Jekyll doesn't provide native support for generating a static website which can
 be viewed without a web server.
 One easy workaround might be to `wget` the website and convert the links:
 
-    wget -k -r http://localhost:4000/
+    wget --convert-links --recursive http://localhost:4000/
 
 ## Licensing
 
 This project, including all of the files and their contents, is licensed under
 the terms of the MIT License.
-See [LICENSE.txt](LICENSE.txt) for details.
+See LICENSE.txt for details.
 
 This website is build upon the Twitter Bootstrap framework, which is also MIT
 Licensed and copyright 2015 Twitter.
