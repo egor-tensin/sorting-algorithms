@@ -2,52 +2,67 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
-from enum import Enum
+from array import array
+import argparse
+import sys
 
-class OrderType(Enum):
-    ASCENDING, RANDOM, DESCENDING = 'ascending', 'random', 'descending'
+from algorithms.inputgen import InputKind
+import algorithms.registry as registry
 
-    def __str__(self):
-        return self.value
+_DEFAULT_INPUT_KIND = InputKind.AVERAGE
+_DEFAULT_LENGTH = 100
 
-def gen_input(kind, n):
-    if kind is OrderType.ASCENDING:
-        return list(range(n))
-    elif kind is OrderType.DESCENDING:
-        return sorted(range(n), reverse=True)
-    elif kind is OrderType.RANDOM:
-        from random import sample
-        return sample(range(n), n)
-    else:
-        raise NotImplementedError(
-            'invalid input ordering: \'{}\''.format(kind))
+def test(algorithm, input_kind=_DEFAULT_INPUT_KIND, length=_DEFAULT_LENGTH):
+    if isinstance(algorithm, str):
+        algorithm = registry.get(algorithm)
+    xs = algorithm.gen_input(length, input_kind)
+    output = algorithm.function(xs)
+    if isinstance(output, array):
+        output = output.tolist()
+    print(output)
+
+def _parse_natural_number(s):
+    n = int(s)
+    if n < 0:
+        raise argparse.ArgumentTypeError('must not be a negative number')
+    return n
+
+def _parse_input_kind(s):
+    try:
+        return InputKind(s)
+    except ValueError:
+        raise argparse.ArgumentTypeError('invalid input kind: ' + str(s))
+
+def _format_algorithm(codename):
+    return '* {}: {}'.format(codename, registry.get(codename).display_name)
+
+def _format_available_algorithms():
+    descr = 'available algorithms (in the CODENAME: DISPLAY_NAME format):\n'
+    return descr + '\n'.join(map(_format_algorithm, registry.get_codenames()))
+
+def _format_description():
+    return _format_available_algorithms()
+
+def _parse_args(args=sys.argv):
+    parser = argparse.ArgumentParser(
+        description=_format_description(),
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+
+    parser.add_argument('algorithm', metavar='CODENAME',
+                        choices=registry.get_codenames(),
+                        help='algorithm codename')
+    parser.add_argument('--input', '-i', dest='input_kind',
+                        choices=InputKind,
+                        type=_parse_input_kind, default=_DEFAULT_INPUT_KIND,
+                        help='specify input kind')
+    parser.add_argument('--length', '-l', '-n', metavar='N',
+                        type=_parse_natural_number, default=_DEFAULT_LENGTH,
+                        help='set input length')
+
+    return parser.parse_args(args[1:])
+
+def main(args=sys.argv):
+    test(**vars(_parse_args(args)))
 
 if __name__ == '__main__':
-    import algorithms.registry
-
-    def natural_number(s):
-        n = int(s)
-        if n < 0:
-            raise argparse.ArgumentTypeError('cannot be negative')
-        return n
-    def order(s):
-        try:
-            return OrderType(s)
-        except ValueError:
-            raise argparse.ArgumentError()
-
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--algorithm', '-l', required=True,
-                        choices=algorithms.registry.get_codenames(),
-                        help='specify algorithm codename')
-    parser.add_argument('--order', '-i',
-                        choices=tuple(x for x in OrderType),
-                        type=order, default=OrderType.RANDOM,
-                        help='specify input order')
-    parser.add_argument('--length', '-n',
-                        type=natural_number, default=100,
-                        help='set input length')
-    args = parser.parse_args()
-    xs = gen_input(args.order, args.length)
-    print(algorithms.registry.get(args.algorithm).get_function()(xs))
+    main()

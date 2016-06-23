@@ -2,24 +2,22 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
+from . import inputgen
+
 class Algorithm:
     def __init__(self, codename, display_name, f):
-        self._codename = codename
-        self._display_name = display_name
-        self._f = f
+        self.codename = codename
+        self.display_name = display_name
+        self.function = f
 
-    def get_codename(self):
-        return self._codename
-
-    def get_display_name(self):
-        return self._display_name
-
-    def get_function(self):
-        return self._f
-
-    def __str__(self):
-        return self.get_display_name()
+    @staticmethod
+    def gen_input(n, case=inputgen.InputKind.AVERAGE):
+        #raise NotImplementedError('inputgen generation is not defined for generic algorithms')
+        return inputgen.gen_input_for_sorting(n, case)
 
 class SortingAlgorithm(Algorithm):
     def __init__(self, codename, display_name, f):
         super().__init__(codename, display_name, f)
+
+    def gen_input(self, n, case=inputgen.InputKind.AVERAGE):
+        return inputgen.gen_input_for_sorting(n, case)

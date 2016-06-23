@@ -2,18 +2,16 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
-_ALL_ALGORITHMS = {}
+from importlib import import_module
+import os.path
+from pkgutil import iter_modules
 
-def _refresh_algorithms():
-    _ALGORITHMS_NAME = '_ALGORITHMS'
-    global _ALL_ALGORITHMS
-    _ALL_ALGORITHMS = {}
+from .. import algorithm
 
-    from algorithms.algorithm import Algorithm
+_ALGORITHMS_NAME = '_ALGORITHMS'
 
-    from importlib import import_module
-    import os.path
-    from pkgutil import iter_modules
+def refresh_algorithms():
+    all_algorithms = {}
 
     for _, module_name, is_pkg in iter_modules([os.path.dirname(__file__)]):
         if is_pkg:
@@ -21,9 +19,9 @@ def _refresh_algorithms():
         module = import_module('.' + module_name, __package__)
         if hasattr(module, _ALGORITHMS_NAME):
             module_algorithms = getattr(module, _ALGORITHMS_NAME)
-            for algorithm in module_algorithms:
-                assert isinstance(algorithm, Algorithm)
-                assert algorithm.get_codename() not in _ALL_ALGORITHMS
-                _ALL_ALGORITHMS[algorithm.get_codename()] = algorithm
+            for descr in module_algorithms:
+                assert isinstance(descr, algorithm.Algorithm)
+                assert descr.codename not in all_algorithms
+                all_algorithms[descr.codename] = descr
 
-_refresh_algorithms()
+    return all_algorithms

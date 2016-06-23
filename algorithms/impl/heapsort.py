@@ -2,6 +2,10 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
+import sys
+
+from ..algorithm import SortingAlgorithm
+
 # Disclaimer: implemented in the most literate way.
 
 def heapsort(xs):
@@ -49,11 +53,16 @@ def _siftdown(xs, start, end):
         else:
             break
 
+_ALGORITHMS = [
+    SortingAlgorithm('heapsort', 'Heapsort', heapsort),
+]
+
+def _parse_args(args=sys.argv):
+    return list(map(int, args[1:]))
+
+def main(args=sys.argv):
+    xs = _parse_args(args)
+    print(heapsort(list(xs)))
+
 if __name__ == '__main__':
-    import sys
-    print(heapsort(list(map(int, sys.argv[1:]))))
-else:
-    from algorithms.algorithm import SortingAlgorithm
-    _ALGORITHMS = [
-        SortingAlgorithm('heapsort', 'Heapsort', heapsort),
-    ]
+    main()

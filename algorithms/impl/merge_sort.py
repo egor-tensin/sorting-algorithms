@@ -2,6 +2,10 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
+import sys
+
+from ..algorithm import SortingAlgorithm
+
 def merge(left, right):
     result = []
     l, r = 0, 0
@@ -24,11 +28,16 @@ def merge_sort(xs):
     mid = len(xs) // 2
     return merge(merge_sort(xs[:mid]), merge_sort(xs[mid:]))
 
+_ALGORITHMS = [
+    SortingAlgorithm('merge_sort', 'Merge sort', merge_sort),
+]
+
+def _parse_args(args=sys.argv):
+    return list(map(int, args[1:]))
+
+def main(args=sys.argv):
+    xs = _parse_args(args)
+    print(merge_sort(list(xs)))
+
 if __name__ == '__main__':
-    import sys
-    print(merge_sort(list(map(int, sys.argv[1:]))))
-else:
-    from algorithms.algorithm import SortingAlgorithm
-    _ALGORITHMS = [
-        SortingAlgorithm('merge_sort', 'Merge sort', merge_sort),
-    ]
+    main()

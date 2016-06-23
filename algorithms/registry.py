@@ -2,16 +2,12 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
-import algorithms.impl
+from . import impl
 
-def refresh_algorithms():
-    algorithms.impl._refresh_algorithms()
+_ALL_ALGORITHMS = impl.refresh_algorithms()
 
 def get_codenames():
-    return algorithms.impl._ALL_ALGORITHMS.keys()
-
-def iter_algorithms():
-    return iter(algorithms.impl._ALL_ALGORITHMS.values())
+    return _ALL_ALGORITHMS.keys()
 
 def get(codename):
-    return algorithms.impl._ALL_ALGORITHMS[codename]
+    return _ALL_ALGORITHMS[codename]

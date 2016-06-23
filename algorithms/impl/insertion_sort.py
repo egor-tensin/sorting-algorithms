@@ -2,6 +2,10 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
+import sys
+
+from ..algorithm import SortingAlgorithm
+
 def insertion_sort(xs):
     for i in range(1, len(xs)):
         j = i
@@ -10,11 +14,16 @@ def insertion_sort(xs):
             j -= 1
     return xs
 
+_ALGORITHMS = [
+    SortingAlgorithm('insertion_sort', 'Insertion sort', insertion_sort),
+]
+
+def _parse_args(args=sys.argv):
+    return list(map(int, args[1:]))
+
+def main(args=sys.argv):
+    xs = _parse_args(args)
+    print(insertion_sort(list(xs)))
+
 if __name__ == '__main__':
-    import sys
-    print(insertion_sort(list(map(int, sys.argv[1:]))))
-else:
-    from algorithms.algorithm import SortingAlgorithm
-    _ALGORITHMS = [
-        SortingAlgorithm('insertion_sort', 'Insertion sort', insertion_sort),
-    ]
+    main()

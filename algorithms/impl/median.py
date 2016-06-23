@@ -2,9 +2,11 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
-from algorithms.impl.quicksort import quicksort_random
+from heapq import heappush, heappop
+import sys
 
-from heapq import *
+from ..algorithm import Algorithm
+from .quicksort import quicksort_random
 
 def calc_median_heaps(xs):
     cur_median = 0.0
@@ -30,7 +32,7 @@ def calc_median_heaps(xs):
             cur_median = min_heap[0]
     return cur_median
 
-def calc_median_sort_first(xs):
+def calc_median_sorting(xs):
     if not xs:
         return 0.0
     quicksort_random(xs)
@@ -39,14 +41,18 @@ def calc_median_sort_first(xs):
     else:
         return xs[len(xs) // 2 - 1] / 2 + xs[len(xs) // 2] / 2
 
-if __name__ == '__main__':
-    import sys
-    xs = list(map(int, sys.argv[1:]))
-    print(calc_median_sort_first(list(xs)))
+_ALGORITHMS = [
+    Algorithm('median_sorting', 'Median value (using explicit sorting)', calc_median_sorting),
+    Algorithm('median_heaps', 'Median value (using heaps)', calc_median_heaps),
+]
+
+def _parse_args(args=sys.argv):
+    return list(map(int, args[1:]))
+
+def main(args=sys.argv):
+    xs = _parse_args(args)
+    print(calc_median_sorting(list(xs)))
     print(calc_median_heaps(list(xs)))
-else:
-    from algorithms.algorithm import Algorithm
-    _ALGORITHMS = [
-        Algorithm('median_sort_first', 'Median (input is sorted first)', calc_median_sort_first),
-        Algorithm('median_heaps', 'Median (using heaps)', calc_median_heaps),
-    ]
+
+if __name__ == '__main__':
+    main()

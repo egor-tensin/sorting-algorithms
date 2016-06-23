@@ -3,6 +3,9 @@
 # See LICENSE.txt for details.
 
 from random import randrange
+import sys
+
+from ..algorithm import SortingAlgorithm
 
 def _partition(xs, beg, end, select_pivot):
     pivot = select_pivot(xs, beg, end)
@@ -55,20 +58,24 @@ def quicksort_random(xs):
     _quicksort(xs, 0, len(xs) - 1, _select_random)
     return xs
 
-if __name__ == '__main__':
-    import sys
-    xs = list(map(int, sys.argv[1:]))
+_ALGORITHMS = [
+    SortingAlgorithm('quicksort_first', 'Quicksort (first element as pivot)', quicksort_first),
+    SortingAlgorithm('quicksort_second', 'Quicksort (second element as pivot)', quicksort_second),
+    SortingAlgorithm('quicksort_middle', 'Quicksort (middle element as pivot)', quicksort_middle),
+    SortingAlgorithm('quicksort_last', 'Quicksort (last element as pivot)', quicksort_last),
+    SortingAlgorithm('quicksort_random', 'Quicksort (random element as pivot)', quicksort_random),
+]
+
+def _parse_args(args=sys.argv):
+    return list(map(int, args[1:]))
+
+def main(args=sys.argv):
+    xs = _parse_args(args)
     print(quicksort_first(list(xs)))
     print(quicksort_second(list(xs)))
     print(quicksort_middle(list(xs)))
     print(quicksort_last(list(xs)))
     print(quicksort_random(list(xs)))
-else:
-    from algorithms.algorithm import SortingAlgorithm
-    _ALGORITHMS = [
-        SortingAlgorithm('quicksort_first', 'Quicksort (first element as pivot)', quicksort_first),
-        SortingAlgorithm('quicksort_second', 'Quicksort (second element as pivot)', quicksort_second),
-        SortingAlgorithm('quicksort_middle', 'Quicksort (middle element as pivot)', quicksort_middle),
-        SortingAlgorithm('quicksort_last', 'Quicksort (last element as pivot)', quicksort_last),
-        SortingAlgorithm('quicksort_random', 'Quicksort (random element as pivot)', quicksort_random),
-    ]
+
+if __name__ == '__main__':
+    main()

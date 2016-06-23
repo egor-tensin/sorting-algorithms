@@ -27,14 +27,17 @@
   set max=%DEFAULT_MAX%
 )
 
-plot.py -l "%algorithm%" -a "%min%" -b "%max%" -r "%iterations%" ^
-    -i ascending -o "%algorithm%_%iterations%_ascending_%min%_%max%.png" ^
+plot.py "%algorithm%" --min "%min%" --max "%max%" ^
+    --iterations "%iterations%" --input best ^
+    --output "%algorithm%_%iterations%_best_%min%_%max%.png" ^
     || exit /b !errorlevel!
-plot.py -l "%algorithm%" -a "%min%" -b "%max%" -r "%iterations%" ^
-    -i random -o "%algorithm%_%iterations%_random_%min%_%max%.png" ^
+plot.py "%algorithm%" --min "%min%" --max "%max%" ^
+    --iterations "%iterations%" --input average ^
+    --output "%algorithm%_%iterations%_average_%min%_%max%.png" ^
     || exit /b !errorlevel!
-plot.py -l "%algorithm%" -a "%min%" -b "%max%" -r "%iterations%" ^
-    -i descending -o "%algorithm%_%iterations%_descending_%min%_%max%.png" ^
+plot.py "%algorithm%" --min "%min%" --max "%max%" ^
+    --iterations "%iterations%" --input worst ^
+    --output "%algorithm%_%iterations%_worst_%min%_%max%.png" ^
     || exit /b !errorlevel!
 
 @exit /b

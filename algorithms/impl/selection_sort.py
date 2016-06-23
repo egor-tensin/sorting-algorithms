@@ -2,6 +2,10 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
+import sys
+
+from ..algorithm import SortingAlgorithm
+
 def selection_sort(xs):
     for i in range(len(xs) - 1):
         min_i = i
@@ -12,11 +16,16 @@ def selection_sort(xs):
             xs[i], xs[min_i] = xs[min_i], xs[i]
     return xs
 
+_ALGORITHMS = [
+    SortingAlgorithm('selection_sort', 'Selection sort', selection_sort),
+]
+
+def _parse_args(args=sys.argv):
+    return list(map(int, args[1:]))
+
+def main(args=sys.argv):
+    xs = _parse_args(args)
+    print(selection_sort(list(xs)))
+
 if __name__ == '__main__':
-    import sys
-    print(selection_sort(list(map(int, sys.argv[1:]))))
-else:
-    from algorithms.algorithm import SortingAlgorithm
-    _ALGORITHMS = [
-        SortingAlgorithm('selection_sort', 'Selection sort', selection_sort),
-    ]
+    main()
