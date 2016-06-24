@@ -1,3 +1,4 @@
-baseurl: ""
 include_comments: false
 minified_externals: false
+
+baseurl: ""
