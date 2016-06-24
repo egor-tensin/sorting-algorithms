@@ -1,19 +1,22 @@
-# Sorting algorithms
+Sorting algorithms
+==================
 
 Getting the hang out of (sorting) algorithms.
-Hosted on [GitHub Pages](https://pages.github.com) at
-https://egor-tensin.github.io/sorting-algorithms/.
+Hosted on [GitHub Pages] at https://egor-tensin.github.io/sorting-algorithms/.
 
-## Installation
+[GitHub Pages]: https://pages.github.com
 
-[Jekyll](http://jekyllrb.com/) is used to build a set of static HTML pages from
-a collection of templates and resources.
+Prerequisites
+-------------
+
+[Jekyll] is used to build a set of static HTML pages from a collection of
+templates and resources.
 It might seem like Jekyll doesn't support Windows very well.
 However, at the moment of writing one can get it to work using the excellent
 tutorial at http://jekyll-windows.juthilo.com/.
 I personally had no problems running Jekyll on Windows whatsoever.
 
-I use [Bundler](http://bundler.io/) to manage project's dependencies.
+I use [Bundler] to manage project's dependencies.
 Make sure you have the `bundler` gem installed; project dependencies can then
 be installed by executing
 
@@ -21,7 +24,11 @@ be installed by executing
 
 in the project's root directory.
 
-## Development
+[Jekyll]: https://jekyllrb.com/
+[Bundler]: http://bundler.io/
+
+Usage
+-----
 
 To run a local web server, execute
 
@@ -42,27 +49,28 @@ from `_config.yml` during development.
 In particular, it
 
 * sets `minified_externals` to `false` so that the properly formatted versions
-  of external CSS stylesheets and JavaScript files are included instead of the
-  `min`ified versions,
+of external CSS stylesheets and JavaScript files are included instead of the
+`min`ified versions,
 * sets `include_comments` to `false` to exclude the Disqus comments section
-  from the posts,
+from the posts,
 * sets `baseurl` to an empty string so that the website can be accessed from
-  local web server's root directory (i.e. from http://localhost:4000/ instead
-  of http://localhost:4000/sorting-algorithms/).
+local web server's root directory (i.e. from http://localhost:4000/ instead of
+http://localhost:4000/sorting-algorithms/).
 
-## Accessing via file://
+### Access via file://
 
 Jekyll doesn't provide native support for generating a static website which can
-be viewed without a web server.
-One easy workaround might be to `wget` the website and convert the links:
+be browsed without running an instance of Jekyll's web server.
+One easy workaround is be to `wget` the website and convert the links:
 
     wget --convert-links --recursive http://localhost:4000/
 
-## Licensing
+License
+-------
 
 This project, including all of the files and their contents, is licensed under
 the terms of the MIT License.
-See LICENSE.txt for details.
+See [LICENSE.txt] for details.
 
 This website is build upon the Twitter Bootstrap framework, which is also MIT
 Licensed and copyright 2015 Twitter.
@@ -70,3 +78,5 @@ Licensed and copyright 2015 Twitter.
 A MIT Licensed CSS style sheet from
 https://github.com/mojombo/tpw/blob/master/css/syntax.css created by Tom
 Preston-Werner is used for syntax highlighting.
+
+[LICENSE.txt]: LICENSE.txt
