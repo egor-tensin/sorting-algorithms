@@ -63,10 +63,13 @@ def _format_available_algorithms():
 def _format_description():
     return _format_available_algorithms()
 
-def _parse_args(args=sys.argv):
-    parser = argparse.ArgumentParser(
+def _create_argument_parser():
+    return argparse.ArgumentParser(
         description=_format_description(),
         formatter_class=argparse.RawDescriptionHelpFormatter)
+
+def _parse_args(args=sys.argv):
+    parser = _create_argument_parser()
 
     parser.add_argument('algorithm', metavar='CODENAME',
                         choices=registry.get_codenames(),

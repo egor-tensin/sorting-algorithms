@@ -12,19 +12,19 @@
 @set algorithm=%1
 
 @if not E%2 == E (
-  set iterations=%2
+    set iterations=%2
 ) else (
-  set iterations=%DEFAULT_ITERATIONS%
+    set iterations=%DEFAULT_ITERATIONS%
 )
 @if not E%3 == E (
-  set min=%3
+    set min=%3
 ) else (
-  set min=%DEFAULT_MIN%
+    set min=%DEFAULT_MIN%
 )
 @if not E%4 == E (
-  set max=%4
+    set max=%4
 ) else (
-  set max=%DEFAULT_MAX%
+    set max=%DEFAULT_MAX%
 )
 
 plot.py "%algorithm%" --min "%min%" --max "%max%" ^
