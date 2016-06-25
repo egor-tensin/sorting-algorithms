@@ -2,12 +2,31 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
+from enum import Enum
 from numbers import Integral
 
 from .inputgen import InputKind
 from .plotter import PlotBuilder
 from . import registry
 from .timer import Timer
+
+class TimeUnits(Enum):
+    SECONDS = 'seconds'
+    MILLISECONDS = 'milliseconds'
+    MICROSECONDS = 'microseconds'
+
+    def get_factor(self):
+        if self is TimeUnits.SECONDS:
+            return 1.
+        elif self is TimeUnits.MILLISECONDS:
+            return 1000.
+        elif self is TimeUnits.MICROSECONDS:
+            return 1000000.
+        else:
+            raise NotImplementedError('invalid time units: ' + str(self))
+
+    def __str__(self):
+        return self.value
 
 class AlgorithmParameters:
     def __init__(self, algorithm, min_len, max_len,
@@ -86,8 +105,8 @@ class AlgorithmParameters:
         return 'Input length'
 
     @staticmethod
-    def _format_plot_ylabel():
-        return 'Running time (sec)'
+    def _format_plot_ylabel(units):
+        return 'Running time ({})'.format(units)
 
     def _format_plot_title(self):
         return '{}, {} case'.format(
@@ -96,14 +115,27 @@ class AlgorithmParameters:
     def _format_plot_suptitle(self):
         return self.algorithm.display_name
 
+    @staticmethod
+    def _derive_time_units(ys):
+        max_y = max(ys)
+        if max_y > 0.1:
+            return TimeUnits.SECONDS
+        elif max_y > 0.0001:
+            return TimeUnits.MILLISECONDS
+        else:
+            return TimeUnits.MICROSECONDS
+
     def plot_running_time(self, output_path=None):
+        xs, ys = self.measure_running_time()
+        units = self._derive_time_units(ys)
+        ys = [y * units.get_factor() for y in ys]
+
         plot_builder = PlotBuilder()
         plot_builder.show_grid()
         plot_builder.set_xlabel(self._format_plot_xlabel())
-        plot_builder.set_ylabel(self._format_plot_ylabel())
-        plot_builder.set_yticklabels_scientific()
+        plot_builder.set_ylabel(self._format_plot_ylabel(units))
+        #plot_builder.set_yticklabels_scientific()
         plot_builder.set_title(self._format_plot_title())
-        xs, ys = self.measure_running_time()
         plot_builder.plot(xs, ys)
         if output_path is None:
             plot_builder.show()
