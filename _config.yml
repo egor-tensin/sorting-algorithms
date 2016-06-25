@@ -19,6 +19,9 @@ jquery_version: 1.11.3
 html5shiv_version: 3.7.2
 respond_version: 1.4.2
 
+project:
+  name: Sorting algorithms
+  description: Getting the hang out of the (sorting) algorithms
 baseurl: /sorting-algorithms
 repository: egor-tensin/sorting-algorithms
 personal_info:
