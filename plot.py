@@ -29,22 +29,28 @@ def plot_algorithm(algorithm, input_kind=_DEFAULT_INPUT_KIND,
     params.plot_running_time(output_path)
 
 def _parse_natural_number(s):
-    n = int(s)
+    try:
+        n = int(s)
+    except ValueError:
+        raise argparse.ArgumentTypeError('must be a non-negative integer: ' + str(s))
     if n < 0:
-        raise argparse.ArgumentTypeError('must not be a negative number')
+        raise argparse.ArgumentTypeError('must be a non-negative integer')
     return n
 
 def _parse_positive_number(s):
-    n = int(s)
+    try:
+        n = int(s)
+    except ValueError:
+        raise argparse.ArgumentTypeError('must be a positive integer: ' + str(s))
     if n < 1:
-        raise argparse.ArgumentTypeError('must be positive')
+        raise argparse.ArgumentTypeError('must be a positive integer')
     return n
 
 def _parse_input_kind(s):
     try:
         return InputKind(s)
     except ValueError:
-        raise argparse.ArgumentTypeError('invalid input_kind: ' + str(s))
+        raise argparse.ArgumentTypeError('invalid input kind: ' + str(s))
 
 def _format_algorithm(codename):
     return '* {}: {}'.format(codename, registry.get(codename).display_name)
