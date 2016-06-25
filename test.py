@@ -38,7 +38,8 @@ def _format_algorithm(codename):
 
 def _format_available_algorithms():
     descr = 'available algorithms (in the CODENAME: DISPLAY_NAME format):\n'
-    return descr + '\n'.join(map(_format_algorithm, registry.get_codenames()))
+    return descr + '\n'.join(map(
+        _format_algorithm, sorted(registry.get_codenames())))
 
 def _format_description():
     return _format_available_algorithms()
