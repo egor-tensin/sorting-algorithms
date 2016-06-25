@@ -101,6 +101,7 @@ class AlgorithmParameters:
         plot_builder.show_grid()
         plot_builder.set_xlabel(self._format_plot_xlabel())
         plot_builder.set_ylabel(self._format_plot_ylabel())
+        plot_builder.set_yticklabels_scientific()
         plot_builder.set_title(self._format_plot_title())
         xs, ys = self.measure_running_time()
         plot_builder.plot(xs, ys)

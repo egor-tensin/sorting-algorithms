@@ -14,6 +14,10 @@ class PlotBuilder:
         plt.ylabel(s)
 
     @staticmethod
+    def set_yticklabels_scientific():
+        plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+
+    @staticmethod
     def show_grid():
         plt.grid()
 
@@ -34,5 +38,8 @@ class PlotBuilder:
         plt.show()
 
     @staticmethod
-    def save(output_path):
-        plt.savefig(output_path)#, bbox_inches='tight')
+    def save(output_path, tight=False):
+        if tight:
+            plt.savefig(output_path, bbox_inches='tight')
+        else:
+            plt.savefig(output_path)
