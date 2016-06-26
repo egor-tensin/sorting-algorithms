@@ -6,10 +6,10 @@ groups:
 navbar_link: <span class="glyphicon glyphicon-th-large"></span>&nbsp;Plots
 custom_css:
   - plots.css
-input_order:
-  - ascending
-  - random
-  - descending
+input_kind:
+  - best
+  - average
+  - worst
 plots:
   - codename: bubble_sort
     brief_name: Bubble sort
@@ -18,9 +18,9 @@ plots:
     max_length: 200
     iterations: 100
     complexity:
-      ascending: O(<var>n</var>)
-      random: O(<var>n</var><sup>2</sup>)
-      descending: O(<var>n</var><sup>2</sup>)
+      best: O(<var>n</var>)
+      average: O(<var>n</var><sup>2</sup>)
+      worst: O(<var>n</var><sup>2</sup>)
   - codename: bubble_sort_optimized
     brief_name: "&hellip; \"optimized\""
     display_name: "\"Optimized\" bubble sort"
@@ -28,9 +28,9 @@ plots:
     max_length: 200
     iterations: 100
     complexity:
-      ascending: O(<var>n</var>)
-      random: O(<var>n</var><sup>2</sup>)
-      descending: O(<var>n</var><sup>2</sup>)
+      best: O(<var>n</var>)
+      average: O(<var>n</var><sup>2</sup>)
+      worst: O(<var>n</var><sup>2</sup>)
   - codename: heapsort
     brief_name: Heapsort
     display_name: Heapsort
@@ -43,20 +43,17 @@ plots:
     display_name: Insertion sort
     min_length: 0
     max_length: 200
-    iterations:
-      ascending: 1000
-      random: 100
-      descending: 100
+    iterations: 100
     complexity:
-      ascending: O(<var>n</var>)
-      random: O(<var>n</var><sup>2</sup>)
-      descending: O(<var>n</var><sup>2</sup>)
+      best: O(<var>n</var>)
+      average: O(<var>n</var><sup>2</sup>)
+      worst: O(<var>n</var><sup>2</sup>)
   - codename: merge_sort
     brief_name: Merge sort
     display_name: Merge sort
     min_length: 0
     max_length: 200
-    iterations: 1000
+    iterations: 100
     complexity: O(<var>n</var> log <var>n</var>)
   - codename: quicksort_first
     brief_name: Quicksort (first element as pivot)
@@ -65,9 +62,9 @@ plots:
     max_length: 200
     iterations: 100
     complexity:
-      ascending: O(<var>n</var><sup>2</sup>)
-      random: O(<var>n</var> log <var>n</var>)
-      descending: O(<var>n</var><sup>2</sup>)
+      best: O(<var>n</var><sup>2</sup>)
+      average: O(<var>n</var> log <var>n</var>)
+      worst: O(<var>n</var><sup>2</sup>)
   - codename: quicksort_second
     brief_name: "&hellip; second element&hellip;"
     display_name: Quicksort (second element as pivot)
@@ -75,9 +72,9 @@ plots:
     max_length: 200
     iterations: 100
     complexity:
-      ascending: O(<var>n</var><sup>2</sup>)
-      random: O(<var>n</var> log <var>n</var>)
-      descending: O(<var>n</var><sup>2</sup>)
+      best: O(<var>n</var><sup>2</sup>)
+      average: O(<var>n</var> log <var>n</var>)
+      worst: O(<var>n</var><sup>2</sup>)
   - codename: quicksort_middle
     brief_name: "&hellip; middle element&hellip;"
     display_name: Quicksort (middle element as pivot)
@@ -92,9 +89,9 @@ plots:
     max_length: 200
     iterations: 100
     complexity:
-      ascending: O(<var>n</var><sup>2</sup>)
-      random: O(<var>n</var> log <var>n</var>)
-      descending: O(<var>n</var><sup>2</sup>)
+      best: O(<var>n</var><sup>2</sup>)
+      average: O(<var>n</var> log <var>n</var>)
+      worst: O(<var>n</var><sup>2</sup>)
   - codename: quicksort_random
     brief_name: "&hellip; random element&hellip;"
     display_name: Quicksort (random element as pivot)
@@ -168,11 +165,11 @@ corresponding algorithm.</p>
       <thead>
         <tr>
           <th class="text-center" rowspan="2">Algorithm</th>
-          <th class="text-center" colspan="{{ page.input_order.size }}">Complexity</th>
+          <th class="text-center" colspan="{{ page.input_kind.size }}">Complexity</th>
         </tr>
         <tr>
-          {% for order in page.input_order %}
-            <th class="text-center">{{ order }}</th>
+          {% for input_kind in page.input_kind %}
+            <th class="text-center">{{ input_kind | capitalize }}</th>
           {% endfor %}
         </tr>
       </thead>
@@ -180,8 +177,13 @@ corresponding algorithm.</p>
 {% for algorithm in page.plots %}
 <tr>
   <td><a href="#plots_{{ algorithm.codename }}">{{ algorithm.brief_name }}</a></td>
-  {% for order in page.input_order %}
-    <td>{% if algorithm.complexity[order] %}{{ algorithm.complexity[order] }}{% else %}{{ algorithm.complexity }}{% endif %}</td>
+  {% for input_kind in page.input_kind %}
+    {% if algorithm.complexity[input_kind] %}
+      {% assign complexity = algorithm.complexity[input_kind] %}
+    {% else %}
+      {% assign complexity = algorithm.complexity %}
+    {% endif %}
+    <td>{{ complexity }}</td>
   {% endfor %}
 </tr>
 {% endfor %}
@@ -194,22 +196,26 @@ corresponding algorithm.</p>
 <a id="plots_{{ algorithm.codename }}"></a>
 <h3>{{ algorithm.display_name }}</h3>
 <div class="row">
-  {% for order in page.input_order %}
-    {% if algorithm.iterations[order] %}
-      {% assign iterations = algorithm.iterations[order] %}
+  {% for input_kind in page.input_kind %}
+    {% if algorithm.iterations[input_kind] %}
+      {% assign iterations = algorithm.iterations[input_kind] %}
     {% else %}
       {% assign iterations = algorithm.iterations %}
     {% endif %}
-    {% capture stem %}{{ algorithm.codename }}_{{ iterations }}_{{ order }}_{{ algorithm.min_length }}_{{ algorithm.max_length }}{% endcapture %}
+    {% if algorithm.complexity[input_kind] %}
+      {% assign complexity = algorithm.complexity[input_kind] %}
+    {% else %}
+      {% assign complexity = algorithm.complexity %}
+    {% endif %}
+    {% capture stem %}{{ algorithm.codename }}_{{ iterations }}_{{ input_kind }}_{{ algorithm.min_length }}_{{ algorithm.max_length }}{% endcapture %}
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="thumbnail">
         <a class="thumbnail" href="{{ site.baseurl }}/img/plots/full_size/{{ stem }}.png">
-          <img class="img-responsive" src="{{ site.baseurl }}/img/plots/previews/{{ stem }}.png" alt="{{ algorithm.display_name | escape }}, {{ iterations }} iterations, {{ order }} input"/>
+          <img class="img-responsive" src="{{ site.baseurl }}/img/plots/preview/{{ stem }}.png" alt="{{ algorithm.display_name | escape }}, {{ iterations }} iterations, {{ input_kind }} case"/>
         </a>
         <div class="caption">
-          <strong>{{ algorithm.display_name }}</strong><br/>
-          <strong>Input:</strong> {{ order }}<br/>
-          <strong>Complexity:</strong> {% if algorithm.complexity[order] %}{{ algorithm.complexity[order] }}{% else %}{{ algorithm.complexity }}{% endif %}<br/>
+          <strong>{{ algorithm.display_name }},</strong><br/>
+          {{ input_kind }} case, {{ complexity }}
         </div>
       </div>
     </div>
