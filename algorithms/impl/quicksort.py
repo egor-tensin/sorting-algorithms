@@ -2,10 +2,12 @@
 # This file is licensed under the terms of the MIT License.
 # See LICENSE.txt for details.
 
-from random import randrange
+from random import randrange, seed
 import sys
 
 from ..algorithm import SortingAlgorithm
+
+seed()
 
 def _partition(xs, beg, end, select_pivot):
     pivot = select_pivot(xs, beg, end)
