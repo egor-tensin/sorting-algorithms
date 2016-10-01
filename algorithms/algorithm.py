@@ -1,6 +1,7 @@
-# Copyright 2016 Egor Tensin <Egor.Tensin@gmail.com>
-# This file is licensed under the terms of the MIT License.
-# See LICENSE.txt for details.
+# Copyright (c) 2016 Egor Tensin <Egor.Tensin@gmail.com>
+# This file is part of the "Sorting algorithms" project.
+# For details, see https://github.com/egor-tensin/sorting-algorithms.
+# Distributed under the MIT License.
 
 from . import inputgen
 
