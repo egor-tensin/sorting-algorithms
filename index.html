@@ -6,23 +6,14 @@ groups:
 navbar_link: <span class="glyphicon glyphicon-home"></span>&nbsp;Main page
 ---
 {% if site.posts.size == 0 %}
-  <h3>Sorry, no posts have been added yet.</h3>
+  <p class="h3">Sorry, no posts have been added yet.</p>
   <p class="text-muted">But I've made quite a few <a href="{{ site.baseurl }}/plots.html">plots</a> which you might want to check out.</p>
   <hr/>
 {% else %}
   {% for post in paginator.posts %}
-    <h2>{{ post.title }}</h2>
+    <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
     <p>{{ post.excerpt }}</p>
-    <div style="display: table; width: 100%;">
-      <div style="display: table-row;">
-        <div style="display: table-cell;">
-          <a class="btn btn-primary" href="{{ site.baseurl }}{{ post.url }}">Read More&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-        <div class="text-muted" style="text-align: right; display: table-cell;">
-          &nbsp;<span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date_to_long_string }}
-        </div>
-      </div>
-    </div>
+    <p class="text-muted" style="text-align: right;"><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date_to_long_string }}</p>
     <hr/>
   {% endfor %}
   <div class="text-center">

@@ -1,4 +1,4 @@
-<h4>About the project</h4>
+<h2 class="h4">About the project</h2>
 <p>{{ site.project.description }}. Feel free to contribute or contact me.</p>
 <div class="list-group wide-enough">
   <a class="list-group-item" href="{{ site.github.repository_url }}"><span class="glyphicon glyphicon-home"></span>&nbsp;GitHub repository</a>
@@ -6,13 +6,16 @@
 </div>
 <p>The implemented algorithms have been plotted to study their performance.
 You can examine the plots <a href="{{ site.baseurl }}/plots.html">here</a>.</p>
-<h4>Latest posts</h4>
+<h2 class="h4">Latest posts</h2>
 {% if site.posts.size == 0 %}
   <p>Sorry, there're no posts yet.</p>
 {% else %}
   <div class="list-group wide-enough">
   {% for post in site.posts limit: 5 %}
-    <a class="list-group-item" href="{{ site.baseurl }}{{ post.url }}"><span class="badge"><span class="glyphicon glyphicon-time"></span>&nbsp;{{ post.date | date_to_string }}</span><span class="glyphicon glyphicon-file"></span>&nbsp;{{ post.title }}</a>
+    <a class="list-group-item" href="{{ site.baseurl }}{{ post.url }}">
+      <span class="badge"><span class="glyphicon glyphicon-time"></span>&nbsp;{{ post.date | date_to_string }}</span>
+      <span class="glyphicon glyphicon-file"></span>&nbsp;{{ post.title }}
+    </a>
   {% endfor %}
   </div>
 {% endif %}
