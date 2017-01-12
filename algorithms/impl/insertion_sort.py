@@ -19,10 +19,12 @@ _ALGORITHMS = [
     SortingAlgorithm('insertion_sort', 'Insertion sort', insertion_sort),
 ]
 
-def _parse_args(args=sys.argv):
-    return list(map(int, args[1:]))
+def _parse_args(args=None):
+    if args is None:
+        args = sys.argv[1:]
+    return list(map(int, args))
 
-def main(args=sys.argv):
+def main(args=None):
     xs = _parse_args(args)
     print(insertion_sort(list(xs)))
 

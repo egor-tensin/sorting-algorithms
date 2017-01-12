@@ -47,10 +47,12 @@ _ALGORITHMS = [
     Algorithm('median_heaps', 'Median value (using heaps)', calc_median_heaps),
 ]
 
-def _parse_args(args=sys.argv):
-    return list(map(int, args[1:]))
+def _parse_args(args=None):
+    if args is None:
+        args = sys.argv[1:]
+    return list(map(int, args))
 
-def main(args=sys.argv):
+def main(args=None):
     xs = _parse_args(args)
     print(calc_median_sorting(list(xs)))
     print(calc_median_heaps(list(xs)))

@@ -57,7 +57,7 @@ class AlgorithmParameters:
             raise TypeError('must be an integral value')
         val = int(val)
         if val < 0:
-            raise ValueError('must not be a negative number')
+            raise ValueError('must be non-negative')
         if self.max_len is not None and self.max_len < val:
             raise ValueError('must not be greater than the maximum length')
         self._min_len = val
@@ -72,7 +72,7 @@ class AlgorithmParameters:
             raise TypeError('must be an integral value')
         val = int(val)
         if val < 0:
-            raise ValueError('must not be a negative number')
+            raise ValueError('must be non-negative')
         if self.min_len is not None and self.min_len > val:
             raise ValueError('must not be lesser than the minimum length')
         self._max_len = val
@@ -87,7 +87,7 @@ class AlgorithmParameters:
             raise TypeError('must be an integral value')
         val = int(val)
         if val < 1:
-            raise ValueError('must be a positive number')
+            raise ValueError('must be positive')
         self._iterations = val
 
     def measure_running_time(self):

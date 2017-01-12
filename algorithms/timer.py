@@ -3,7 +3,8 @@
 # For details, see https://github.com/egor-tensin/sorting-algorithms.
 # Distributed under the MIT License.
 
-import gc, time
+import gc
+import time
 
 def get_timestamp():
     return time.perf_counter()

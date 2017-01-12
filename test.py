@@ -22,7 +22,7 @@ def test(algorithm, input_kind=_DEFAULT_INPUT_KIND, length=_DEFAULT_LENGTH):
         output = output.tolist()
     print(output)
 
-def _parse_natural_number(s):
+def _parse_non_negative_integer(s):
     try:
         n = int(s)
     except ValueError:
@@ -53,7 +53,9 @@ def _create_argument_parser():
         description=_format_description(),
         formatter_class=argparse.RawDescriptionHelpFormatter)
 
-def _parse_args(args=sys.argv):
+def _parse_args(args=None):
+    if args is None:
+        args = sys.argv[1:]
     parser = _create_argument_parser()
 
     parser.add_argument('algorithm', metavar='CODENAME',
@@ -61,15 +63,17 @@ def _parse_args(args=sys.argv):
                         help='algorithm codename')
     parser.add_argument('--input', '-i', dest='input_kind',
                         choices=InputKind,
-                        type=_parse_input_kind, default=_DEFAULT_INPUT_KIND,
+                        type=_parse_input_kind,
+                        default=_DEFAULT_INPUT_KIND,
                         help='specify input kind')
     parser.add_argument('--length', '-l', '-n', metavar='N',
-                        type=_parse_natural_number, default=_DEFAULT_LENGTH,
+                        type=_parse_non_negative_integer,
+                        default=_DEFAULT_LENGTH,
                         help='set input length')
 
-    return parser.parse_args(args[1:])
+    return parser.parse_args(args)
 
-def main(args=sys.argv):
+def main(args=None):
     test(**vars(_parse_args(args)))
 
 if __name__ == '__main__':

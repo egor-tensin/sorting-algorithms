@@ -21,10 +21,12 @@ _ALGORITHMS = [
     SortingAlgorithm('selection_sort', 'Selection sort', selection_sort),
 ]
 
-def _parse_args(args=sys.argv):
-    return list(map(int, args[1:]))
+def _parse_args(args=None):
+    if args is None:
+        args = sys.argv[1:]
+    return list(map(int, args))
 
-def main(args=sys.argv):
+def main(args=None):
     xs = _parse_args(args)
     print(selection_sort(list(xs)))
 

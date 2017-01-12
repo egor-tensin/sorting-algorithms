@@ -29,7 +29,7 @@ def plot_algorithm(algorithm, input_kind=_DEFAULT_INPUT_KIND,
                                  iterations=iterations)
     params.plot_running_time(output_path)
 
-def _parse_natural_number(s):
+def _parse_non_negative_integer(s):
     try:
         n = int(s)
     except ValueError:
@@ -38,7 +38,7 @@ def _parse_natural_number(s):
         raise argparse.ArgumentTypeError('must be a non-negative integer')
     return n
 
-def _parse_positive_number(s):
+def _parse_positive_integer(s):
     try:
         n = int(s)
     except ValueError:
@@ -69,14 +69,16 @@ def _create_argument_parser():
         description=_format_description(),
         formatter_class=argparse.RawDescriptionHelpFormatter)
 
-def _parse_args(args=sys.argv):
+def _parse_args(args=None):
+    if args is None:
+        args = sys.argv[1:]
     parser = _create_argument_parser()
 
     parser.add_argument('algorithm', metavar='CODENAME',
                         choices=registry.get_codenames(),
                         help='algorithm codename')
     parser.add_argument('--iterations', '-r', metavar='N',
-                        type=_parse_positive_number,
+                        type=_parse_positive_integer,
                         default=_DEFAULT_ITERATIONS,
                         help='set number of algorithm iterations')
     parser.add_argument('--input', '-i', dest='input_kind',
@@ -84,19 +86,19 @@ def _parse_args(args=sys.argv):
                         type=_parse_input_kind, default=_DEFAULT_INPUT_KIND,
                         help='specify input kind')
     parser.add_argument('--min', '-a', metavar='N', dest='min_len',
-                        type=_parse_natural_number,
+                        type=_parse_non_negative_integer,
                         default=_DEFAULT_MIN_LENGTH,
                         help='set min input length')
     parser.add_argument('--max', '-b', metavar='N', dest='max_len',
-                        type=_parse_natural_number,
+                        type=_parse_non_negative_integer,
                         default=_DEFAULT_MAX_LENGTH,
                         help='set max input length')
     parser.add_argument('--output', '-o', metavar='PATH', dest='output_path',
                         help='set plot file path')
 
-    return parser.parse_args(args[1:])
+    return parser.parse_args(args)
 
-def main(args=sys.argv):
+def main(args=None):
     plot_algorithm(**vars(_parse_args(args)))
 
 if __name__ == '__main__':

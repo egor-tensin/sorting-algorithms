@@ -20,7 +20,7 @@ def _gen_input_from(xs):
 
 def gen_input_for_sorting(n, case=InputKind.AVERAGE):
     if n < 0:
-        raise ValueError('input length must not be a negative number')
+        raise ValueError('input length cannot be less than zero')
     if case is InputKind.BEST:
         return _gen_input_from(range(n))
     elif case is InputKind.AVERAGE:

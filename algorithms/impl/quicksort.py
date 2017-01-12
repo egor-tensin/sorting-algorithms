@@ -69,10 +69,12 @@ _ALGORITHMS = [
     SortingAlgorithm('quicksort_random', 'Quicksort (random element as pivot)', quicksort_random),
 ]
 
-def _parse_args(args=sys.argv):
-    return list(map(int, args[1:]))
+def _parse_args(args=None):
+    if args is None:
+        args = sys.argv[1:]
+    return list(map(int, args))
 
-def main(args=sys.argv):
+def main(args=None):
     xs = _parse_args(args)
     print(quicksort_first(list(xs)))
     print(quicksort_second(list(xs)))
