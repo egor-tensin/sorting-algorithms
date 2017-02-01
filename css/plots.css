@@ -1,3 +1,4 @@
+/* I don't like the unnecessary white space below <img>s in thumbnails. */
 a.thumbnail {
   margin-bottom: 0;
 }

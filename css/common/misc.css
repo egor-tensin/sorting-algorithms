@@ -4,6 +4,7 @@
 .wider {
   max-width: 600px;
 }
+/* "Header link" becomes blue inside of <hN><a>Header link</a></hN> otherwise. */
 h1 a,
 h2 a,
 h3 a,
@@ -11,4 +12,8 @@ h4 a,
 h5 a,
 h6 a {
   color: inherit;
+}
+/* Link captions become too close to badges on the sidebar. */
+span.badge {
+  margin-left: .5em;
 }
