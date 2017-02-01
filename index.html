@@ -12,8 +12,8 @@ navbar_link: <span class="glyphicon glyphicon-home"></span>&nbsp;Main page
 {% else %}
   {% for post in paginator.posts %}
     <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+    <p class="text-muted"><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date_to_long_string }}</p>
     <p>{{ post.excerpt }}</p>
-    <p class="text-muted" style="text-align: right;"><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date_to_long_string }}</p>
     <hr/>
   {% endfor %}
   <div class="text-center">
