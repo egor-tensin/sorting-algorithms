@@ -6,27 +6,27 @@
 @setlocal enabledelayedexpansion
 @echo off
 
-set DEFAULT_ITERATIONS=100
-set DEFAULT_MIN=0
-set DEFAULT_MAX=200
+set default_iterations=100
+set default_min=0
+set default_max=200
 
-if E%1 == E goto :exit_with_usage
-set algorithm=%1
+if "%~1" == "" goto :exit_with_usage
+set "algorithm=%~1"
 
-if not E%2 == E (
-    set iterations=%2
+if "%~2" == "" (
+    set "iterations=%default_iterations%"
 ) else (
-    set iterations=%DEFAULT_ITERATIONS%
+    set "iterations=%~2"
 )
-if not E%3 == E (
-    set min=%3
+if "%~3" == "" (
+    set "min=%default_min%"
 ) else (
-    set min=%DEFAULT_MIN%
+    set "min=%~3"
 )
-if not E%4 == E (
-    set max=%4
+if "%~4" == "" (
+    set "max=%default_max%"
 ) else (
-    set max=%DEFAULT_MAX%
+    set "max=%~4"
 )
 
 for %%i in (best average worst) do (
@@ -37,8 +37,8 @@ for %%i in (best average worst) do (
         --output "%algorithm%_%iterations%_%%i_%min%_%max%.png" || exit /b !errorlevel!
 )
 
-exit /b
+exit /b 0
 
 :exit_with_usage:
-echo Usage: %0 ALGORITHM [ITERATIONS=%DEFAULT_ITERATIONS% [MIN=%DEFAULT_MIN% [MAX=%DEFAULT_MAX%]]]
+echo Usage: %~nx0 ALGORITHM [ITERATIONS [MIN_VALUE [MAX_VALUE]]]
 exit /b 1
