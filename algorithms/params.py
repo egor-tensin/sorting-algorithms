@@ -6,7 +6,7 @@
 from enum import Enum
 from numbers import Integral
 
-from .inputgen import InputKind
+from .input_kind import InputKind
 from .plotter import PlotBuilder
 from . import registry
 from .timer import Timer

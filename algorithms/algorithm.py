@@ -3,7 +3,7 @@
 # For details, see https://github.com/egor-tensin/sorting-algorithms.
 # Distributed under the MIT License.
 
-from . import inputgen
+from . import input_kind
 
 class Algorithm:
     def __init__(self, codename, display_name, f):
@@ -12,13 +12,13 @@ class Algorithm:
         self.function = f
 
     @staticmethod
-    def gen_input(n, case=inputgen.InputKind.AVERAGE):
-        #raise NotImplementedError('input generation is not defined for generic algorithms')
-        return inputgen.gen_input_for_sorting(n, case)
+    def gen_input(n, case=input_kind.InputKind.AVERAGE):
+        #raise NotImplementedError('input generation is not defined for a generic algorithm')
+        return input_kind.gen_input_for_sorting(n, case)
 
 class SortingAlgorithm(Algorithm):
     def __init__(self, codename, display_name, f):
         super().__init__(codename, display_name, f)
 
-    def gen_input(self, n, case=inputgen.InputKind.AVERAGE):
-        return inputgen.gen_input_for_sorting(n, case)
+    def gen_input(self, n, case=input_kind.InputKind.AVERAGE):
+        return input_kind.gen_input_for_sorting(n, case)

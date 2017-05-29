@@ -6,7 +6,7 @@
 import argparse
 import sys
 
-from algorithms.inputgen import InputKind
+from algorithms.input_kind import InputKind
 from algorithms.params import AlgorithmParameters
 import algorithms.registry as registry
 

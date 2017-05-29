@@ -7,7 +7,7 @@ from array import array
 import argparse
 import sys
 
-from algorithms.inputgen import InputKind
+from algorithms.input_kind import InputKind
 import algorithms.registry as registry
 
 _DEFAULT_INPUT_KIND = InputKind.AVERAGE
