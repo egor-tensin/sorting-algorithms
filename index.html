@@ -1,22 +1,229 @@
 ---
-title: Main page
-layout: sidebar
+title: Plots
+layout: plain
 groups:
   - navbar
-navbar_link: <span class="glyphicon glyphicon-home"></span>&nbsp;Main page
+navbar_link: <span class="glyphicon glyphicon-th-large"></span>&nbsp;Plots
+custom_css:
+  - plots.css
+input_kind:
+  - best
+  - average
+  - worst
+plots:
+  - codename: bubble_sort
+    brief_name: Bubble sort
+    display_name: Bubble sort
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity:
+      best: O(<var>n</var>)
+      average: O(<var>n</var><sup>2</sup>)
+      worst: O(<var>n</var><sup>2</sup>)
+  - codename: bubble_sort_optimized
+    brief_name: "&hellip; \"optimized\""
+    display_name: "\"Optimized\" bubble sort"
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity:
+      best: O(<var>n</var>)
+      average: O(<var>n</var><sup>2</sup>)
+      worst: O(<var>n</var><sup>2</sup>)
+  - codename: heapsort
+    brief_name: Heapsort
+    display_name: Heapsort
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity: O(<var>n</var> log <var>n</var>)
+  - codename: insertion_sort
+    brief_name: Insertion sort
+    display_name: Insertion sort
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity:
+      best: O(<var>n</var>)
+      average: O(<var>n</var><sup>2</sup>)
+      worst: O(<var>n</var><sup>2</sup>)
+  - codename: merge_sort
+    brief_name: Merge sort
+    display_name: Merge sort
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity: O(<var>n</var> log <var>n</var>)
+  - codename: quicksort_first
+    brief_name: Quicksort (first element as pivot)
+    display_name: Quicksort (first element as pivot)
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity:
+      best: O(<var>n</var><sup>2</sup>)
+      average: O(<var>n</var> log <var>n</var>)
+      worst: O(<var>n</var><sup>2</sup>)
+  - codename: quicksort_second
+    brief_name: "&hellip; second element&hellip;"
+    display_name: Quicksort (second element as pivot)
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity:
+      best: O(<var>n</var><sup>2</sup>)
+      average: O(<var>n</var> log <var>n</var>)
+      worst: O(<var>n</var><sup>2</sup>)
+  - codename: quicksort_middle
+    brief_name: "&hellip; middle element&hellip;"
+    display_name: Quicksort (middle element as pivot)
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity: O(<var>n</var> log <var>n</var>)
+  - codename: quicksort_last
+    brief_name: "&hellip; last element&hellip;"
+    display_name: Quicksort (last element as pivot)
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity:
+      best: O(<var>n</var><sup>2</sup>)
+      average: O(<var>n</var> log <var>n</var>)
+      worst: O(<var>n</var><sup>2</sup>)
+  - codename: quicksort_random
+    brief_name: "&hellip; random element&hellip;"
+    display_name: Quicksort (random element as pivot)
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity: O(<var>n</var> log <var>n</var>)
+  - codename: selection_sort
+    brief_name: Selection sort
+    display_name: Selection sort
+    min_length: 0
+    max_length: 200
+    iterations: 100
+    complexity: O(<var>n</var><sup>2</sup>)
 ---
-{% if site.posts.size == 0 %}
-  <p class="h3">Sorry, no posts have been added yet.</p>
-  <p class="text-muted">But I've made quite a few <a href="{{ site.baseurl }}/plots.html">plots</a> which you might want to check out.</p>
-  <hr/>
-{% else %}
-  {% for post in paginator.posts %}
-    <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-    <p class="text-muted"><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date_to_long_string }}</p>
-    <p>{{ post.excerpt }}</p>
-    <hr/>
-  {% endfor %}
-  <div class="text-center">
-    {% include common/pagination.html %}
+<h1>{{ page.title }}</h1>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8">
+    <p class="text-muted">The goals of this "project" include a) familiarizing
+myself with a few sorting algorithms by examining their (possibly, simplified)
+implementations and b) studying the way algorithm's running time changes in
+relation to the length of its input (a.k.a. identifying its time
+complexity).</p>
+    <p class="text-muted">A simple way to visualize the way algorithm's running
+time changes is to make appropriate measurements and plot them on a nice graph.
+The results of course are highly dependent on the hardware used, while the
+graph's look depends on the software used for rendering.</p>
+    <p class="text-muted">Both the hardware &amp; the software that were used
+to produce the plots are listed below.</p>
+    <table class="table table-bordered wide-enough">
+      <tr>
+        <th>CPU</th>
+        <td><a href="http://ark.intel.com/products/84695/Intel-Core-i3-5005U-Processor-3M-Cache-2_00-GHz">Intel Core i3-5005U</a></td>
+      </tr>
+      <tr>
+        <th>OS</th>
+        <td>Windows 8.1</td>
+      </tr>
+      <tr>
+        <th>Python</th>
+        <td>3.5.1</td>
+      </tr>
+      <tr>
+        <th>matplotlib</th>
+        <td>1.5.1</td>
+      </tr>
+    </table>
   </div>
+</div>
+
+{% if page.plots and page.plots != empty %}
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8">
+    <p>The table &amp; plots below are just an attempt to nicely lay out the
+data generated using the code from the project repository's <code>master</code>
+branch.
+Visit <a href="{{ site.github.repository_url }}">{{ site.github.repository_url }}</a> for more details.</p>
+
+    <p>Each of the implemented algorithms was provided with three input
+sequences:</p>
+    <ul>
+      <li>a list of <var>n</var> consecutive numbers sorted in ascending order,</li>
+      <li>&hellip; in descending order,</li>
+      <li>&hellip; in random order.</li>
+    </ul>
+    <p>Use the table below to quickly navigate to the plots for the
+corresponding algorithm.</p>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="text-center" rowspan="2">Algorithm</th>
+          <th class="text-center" colspan="{{ page.input_kind.size }}">Complexity</th>
+        </tr>
+        <tr>
+          {% for input_kind in page.input_kind %}
+            <th class="text-center">{{ input_kind | capitalize }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+{% for algorithm in page.plots %}
+<tr>
+  <td><a href="#plots_{{ algorithm.codename }}">{{ algorithm.brief_name }}</a></td>
+  {% for input_kind in page.input_kind %}
+    {% if algorithm.complexity[input_kind] %}
+      {% assign complexity = algorithm.complexity[input_kind] %}
+    {% else %}
+      {% assign complexity = algorithm.complexity %}
+    {% endif %}
+    <td>{{ complexity }}</td>
+  {% endfor %}
+</tr>
+{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% for algorithm in page.plots %}
+<a id="plots_{{ algorithm.codename }}"></a>
+<h3>{{ algorithm.display_name }}</h3>
+<div class="row">
+  {% for input_kind in page.input_kind %}
+    {% if algorithm.iterations[input_kind] %}
+      {% assign iterations = algorithm.iterations[input_kind] %}
+    {% else %}
+      {% assign iterations = algorithm.iterations %}
+    {% endif %}
+    {% if algorithm.complexity[input_kind] %}
+      {% assign complexity = algorithm.complexity[input_kind] %}
+    {% else %}
+      {% assign complexity = algorithm.complexity %}
+    {% endif %}
+    {% capture stem %}{{ algorithm.codename }}_{{ iterations }}_{{ input_kind }}_{{ algorithm.min_length }}_{{ algorithm.max_length }}{% endcapture %}
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <a class="thumbnail" href="{{ site.baseurl }}/img/plots/full_size/{{ stem }}.png">
+          <img class="img-responsive" src="{{ site.baseurl }}/img/plots/preview/{{ stem }}.png" alt="{{ algorithm.display_name | escape }}, {{ iterations }} iterations, {{ input_kind }} case"/>
+        </a>
+        <div class="caption">
+          <strong>{{ algorithm.display_name }}</strong><br/>
+          {{ input_kind | capitalize }} case, {{ complexity }}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endfor %}
+
+{% else %}
+<p class="h3">Sorry, not plots have been added yet.</p>
+<hr/>
 {% endif %}
