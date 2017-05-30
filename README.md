@@ -2,22 +2,25 @@ Sorting algorithms
 ==================
 
 Gettting the hang out of (sorting) algorithms.
-The corresponding blog is hosted on [GitHub Pages] at
-https://egor-tensin.github.io/sorting-algorithms/.
-
-[GitHub Pages]: https://pages.github.com/
+See also https://egor-tensin.github.io/sorting-algorithms/.
 
 Prerequisites
 -------------
 
-Python 3.4 or higher is required.
-Additionally, the excellent [matplotlib] library is required for plotting.
-The versions the author is using are listed below.
+* Python 3.4 or higher
+* [matplotlib]
+* [numpy] (required by [matplotlib])
 
-Software     | Version
------------- | -------
-Python       | 3.5.1
-[matplotlib] | 1.5.1
+The versions below have been verified to work properly.
+
+| Software     | Version
+| ------------ | -------
+| CPython      | 3.5.1
+| [matplotlib] | 1.5.1
+| [numpy]      | 1.11.0
+
+[matplotlib]: http://matplotlib.org/
+[numpy]: http://www.numpy.org/
 
 Algorithms
 ----------
@@ -26,15 +29,15 @@ Each of the implemented sorting algorithms resides in a separate Python module
 (in the `algorithms.impl` package).
 The implemented algorithms are listed below.
 
-Module name      | Description
----------------- | --------------
-`bubble_sort`    | Bubble sort
-`heapsort`       | Heapsort
-`insertion_sort` | Insertion sort
-`median`         | Median value
-`merge_sort`     | Merge sort
-`quicksort`      | Quicksort
-`selection_sort` | Selection sort
+| Module name      | Description
+| ---------------- | --------------
+| `bubble_sort`    | Bubble sort
+| `heapsort`       | Heapsort
+| `insertion_sort` | Insertion sort
+| `median`         | Median value
+| `merge_sort`     | Merge sort
+| `quicksort`      | Quicksort
+| `selection_sort` | Selection sort
 
 Some algorithms actually come in different variants.
 For example, the implementation of quicksort includes a number of versions
@@ -82,39 +85,8 @@ A few usage examples are listed below.
 Plotting
 --------
 
-The goals of this "project" include a) familiarizing myself with a few sorting
-algorithms by examining their (possibly, simplified) implementations and b)
-studying the way algorithm's running time changes in relation to the length of
-its input (a.k.a. identifying its time complexity).
-
-A simple way to visualize the way algorithm's running time changes is to make
-appropriate measurements and plot them on a nice graph.
-The results of course are highly dependent on the hardware used, while the
-graph's look depends on the software used for rendering.
-
-I've made the measurements for each of the implemented algorithms and put the
-plots to the "plots/" directory.
-Both the hardware & the software that were used to produce the plots are listed
-below.
-
-Component    | Version
------------- | ---------------------
-CPU          | [Intel Core i3-5005U]
-OS           | Windows 8.1
-Python       | 3.5.1
-[matplotlib] | 1.5.1
-
-[Intel Core i3-5005U]: http://ark.intel.com/products/84695/Intel-Core-i3-5005U-Processor-3M-Cache-2_00-GHz
-[matplotlib]: http://matplotlib.org/
-
-Each of the implemented sorting algorithms was provided with three input
-sequences:
-
-* a list of *n* consecutive numbers sorted in ascending order,
-* ... in descending order,
-* ... in random order.
-
-You can generate similar plots using "plot.py".
+You can generate similar plots you might've seen at
+https://egor-tensin.github.io/sorting-algorithms/ using "plot.py".
 Consult the output of `plot.py --help` to learn how to use the script.
 A few usage examples are listed below.
 
