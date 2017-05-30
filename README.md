@@ -74,8 +74,4 @@ See [LICENSE.txt] for details.
 This website is build upon the Twitter Bootstrap framework, which is also MIT
 Licensed and copyright 2015 Twitter.
 
-A MIT Licensed CSS style sheet from
-https://github.com/mojombo/tpw/blob/master/css/syntax.css created by Tom
-Preston-Werner is used for syntax highlighting.
-
 [LICENSE.txt]: LICENSE.txt
