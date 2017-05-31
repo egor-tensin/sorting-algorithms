@@ -176,7 +176,7 @@ corresponding algorithm.</p>
       <tbody>
 {% for algorithm in page.plots %}
 <tr>
-  <td><a href="#plots_{{ algorithm.codename }}">{{ algorithm.brief_name }}</a></td>
+  <td><a href="#{{ algorithm.codename }}">{{ algorithm.brief_name }}</a></td>
   {% for input_kind in page.input_kind %}
     {% if algorithm.complexity[input_kind] %}
       {% assign complexity = algorithm.complexity[input_kind] %}
@@ -193,7 +193,7 @@ corresponding algorithm.</p>
 </div>
 
 {% for algorithm in page.plots %}
-<a id="plots_{{ algorithm.codename }}"></a>
+<a id="{{ algorithm.codename }}"></a>
 <h3>{{ algorithm.display_name }}</h3>
 <div class="row">
   {% for input_kind in page.input_kind %}
