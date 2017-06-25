@@ -1,28 +1,21 @@
 {% if site.posts.size != 0 %}
 <ul class="pagination">
   {% if paginator.previous_page %}
-    {% if paginator.previous_page == 1 %}
-      <li><a href="{{ site.baseurl }}/"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Prev</a></li>
-    {% else %}
-      <li><a href="{{ site.baseurl }}/page{{ paginator.previous_page }}"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Prev</a></li>
-    {% endif %}
+    <li><a href="{{ site.baseurl }}{{ paginator.previous_page_path }}"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Prev</a></li>
   {% else %}
     <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Prev</a></li>
   {% endif %}
-  {% if paginator.page == 1 %}
-    <li class="active"><a href="{{ site.baseurl }}/">1</a></li>
-  {% else %}
-    <li><a href="{{ site.baseurl }}/">1</a></li>
-  {% endif %}
-  {% for count in (2..paginator.total_pages) %}
-    {% if count == paginator.page %}
-      <li class="active"><a href="{{ site.baseurl }}/page{{ count }}">{{ count }}</a></li>
+  {% for page_number in (1..paginator.total_pages) %}
+    {% if page_number == paginator.page %}
+      <li class="active"><a href="#">{{ page_number }}</a></li>
+    {% elsif page_number == 1 %}
+      <li><a href="{{ site.baseurl }}/posts/">{{ page_number }}</a></li>
     {% else %}
-      <li><a href="{{ site.baseurl }}/page{{ count }}">{{ count }}</a></li>
+      <li><a href="{{ site.baseurl }}{{ site.paginate_path | replace: ':num', page_number }}">{{ page_number }}</a></li>
     {% endif %}
   {% endfor %}
   {% if paginator.next_page %}
-    <li><a href="{{ site.baseurl }}/page{{ paginator.next_page }}">Next&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></li>
+    <li><a href="{{ site.baseurl }}{{ paginator.next_page_path }}">Next&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></li>
   {% else %}
     <li class="disabled"><a href="#">Next&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a></li>
   {% endif %}
