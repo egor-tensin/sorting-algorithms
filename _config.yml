@@ -3,6 +3,7 @@ plugins:
   - jekyll-github-metadata
 
 exclude:
+  - build.sh
   - Gemfile
   - Gemfile.lock
   - LICENSE.txt
