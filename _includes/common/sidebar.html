@@ -17,7 +17,7 @@ You can examine the plots <a href="{{ site.baseurl }}/">here</a>.</p>
     <div class="list-group wide-enough">
       {% for post in site.posts limit: 5 %}
       <a class="list-group-item" href="{{ site.baseurl }}{{ post.url }}">
-        <span class="badge"><span class="glyphicon glyphicon-time"></span>&nbsp;{{ post.date | date_to_string }}</span>
+        <span class="badge"><span class="glyphicon glyphicon-time"></span>&nbsp;{{ post.date | date: '%-d %b %Y' }}</span>
         <span class="glyphicon glyphicon-file"></span>&nbsp;{{ post.title }}
       </a>
       {% endfor %}
