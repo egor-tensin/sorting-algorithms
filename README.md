@@ -1,6 +1,8 @@
 Sorting algorithms
 ==================
 
+[![Travis (.com) branch](https://img.shields.io/travis/com/egor-tensin/sorting-algorithms/master?label=Travis)](https://travis-ci.com/egor-tensin/sorting-algorithms)
+
 Gettting the hang out of (sorting) algorithms.
 See also https://egor-tensin.github.io/sorting-algorithms/.
 
