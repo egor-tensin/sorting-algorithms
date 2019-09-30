@@ -1,5 +1,4 @@
 plugins:
-  - jekyll-paginate
   - jekyll-github-metadata
 
 exclude:
@@ -10,12 +9,7 @@ exclude:
   - serve.bat
   - serve.sh
   - README.md
-  - posts/
 
-paginate: 10
-paginate_path: "/posts/page:num/"
-
-include_comments: true
 minified_externals: true
 
 bootstrap_version: 3.3.7

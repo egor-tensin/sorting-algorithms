@@ -46,8 +46,6 @@ In particular, it
 * sets `minified_externals` to `false` so that the properly formatted versions
 of external CSS stylesheets and JavaScript files are included instead of the
 `min`ified versions,
-* sets `include_comments` to `false` to exclude the Disqus comments section
-from the posts,
 * sets `baseurl` to an empty string so that the website can be accessed from
 local web server's root directory (i.e. from http://localhost:4000/ instead of
 http://localhost:4000/sorting-algorithms/).
