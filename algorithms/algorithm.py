@@ -5,6 +5,7 @@
 
 from . import input_kind
 
+
 class Algorithm:
     def __init__(self, codename, display_name, f):
         self.codename = codename
@@ -16,9 +17,7 @@ class Algorithm:
         #raise NotImplementedError('input generation is not defined for a generic algorithm')
         return input_kind.gen_input_for_sorting(n, case)
 
-class SortingAlgorithm(Algorithm):
-    def __init__(self, codename, display_name, f):
-        super().__init__(codename, display_name, f)
 
+class SortingAlgorithm(Algorithm):
     def gen_input(self, n, case=input_kind.InputKind.AVERAGE):
         return input_kind.gen_input_for_sorting(n, case)

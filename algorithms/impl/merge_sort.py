@@ -7,6 +7,7 @@ import sys
 
 from ..algorithm import SortingAlgorithm
 
+
 def merge(left, right):
     result = []
     l, r = 0, 0
@@ -23,24 +24,29 @@ def merge(left, right):
         result.extend(right[r:])
     return result
 
+
 def merge_sort(xs):
     if len(xs) < 2:
         return xs
     mid = len(xs) // 2
     return merge(merge_sort(xs[:mid]), merge_sort(xs[mid:]))
 
+
 _ALGORITHMS = [
     SortingAlgorithm('merge_sort', 'Merge sort', merge_sort),
 ]
+
 
 def _parse_args(args=None):
     if args is None:
         args = sys.argv[1:]
     return list(map(int, args))
 
+
 def main(args=None):
     xs = _parse_args(args)
     print(merge_sort(list(xs)))
+
 
 if __name__ == '__main__':
     main()

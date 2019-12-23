@@ -11,6 +11,7 @@ from .plotter import PlotBuilder
 from . import registry
 from .timer import Timer
 
+
 class TimeUnits(Enum):
     SECONDS = 'seconds'
     MILLISECONDS = 'milliseconds'
@@ -19,15 +20,15 @@ class TimeUnits(Enum):
     def get_factor(self):
         if self is TimeUnits.SECONDS:
             return 1.
-        elif self is TimeUnits.MILLISECONDS:
+        if self is TimeUnits.MILLISECONDS:
             return 1000.
-        elif self is TimeUnits.MICROSECONDS:
+        if self is TimeUnits.MICROSECONDS:
             return 1000000.
-        else:
-            raise NotImplementedError('invalid time units: ' + str(self))
+        raise NotImplementedError('invalid time units: ' + str(self))
 
     def __str__(self):
         return self.value
+
 
 class AlgorithmParameters:
     def __init__(self, algorithm, min_len, max_len,
@@ -121,10 +122,9 @@ class AlgorithmParameters:
         max_y = max(ys)
         if max_y > 0.1:
             return TimeUnits.SECONDS
-        elif max_y > 0.0001:
+        if max_y > 0.0001:
             return TimeUnits.MILLISECONDS
-        else:
-            return TimeUnits.MICROSECONDS
+        return TimeUnits.MICROSECONDS
 
     def plot_running_time(self, output_path=None):
         xs, ys = self.measure_running_time()

@@ -5,6 +5,7 @@
 
 import matplotlib.pyplot as plt
 
+
 class PlotBuilder:
     @staticmethod
     def set_xlabel(s):

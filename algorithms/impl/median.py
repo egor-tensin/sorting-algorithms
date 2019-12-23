@@ -9,6 +9,7 @@ import sys
 from ..algorithm import Algorithm
 from .quicksort import quicksort_random
 
+
 def calc_median_heaps(xs):
     cur_median = 0.0
     min_heap, max_heap = [], []
@@ -33,6 +34,7 @@ def calc_median_heaps(xs):
             cur_median = min_heap[0]
     return cur_median
 
+
 def calc_median_sorting(xs):
     if not xs:
         return 0.0
@@ -42,20 +44,24 @@ def calc_median_sorting(xs):
     else:
         return xs[len(xs) // 2 - 1] / 2 + xs[len(xs) // 2] / 2
 
+
 _ALGORITHMS = [
     Algorithm('median_sorting', 'Median value (using explicit sorting)', calc_median_sorting),
     Algorithm('median_heaps', 'Median value (using heaps)', calc_median_heaps),
 ]
+
 
 def _parse_args(args=None):
     if args is None:
         args = sys.argv[1:]
     return list(map(int, args))
 
+
 def main(args=None):
     xs = _parse_args(args)
     print(calc_median_sorting(list(xs)))
     print(calc_median_heaps(list(xs)))
+
 
 if __name__ == '__main__':
     main()

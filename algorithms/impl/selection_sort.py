@@ -7,6 +7,7 @@ import sys
 
 from ..algorithm import SortingAlgorithm
 
+
 def selection_sort(xs):
     for i in range(len(xs) - 1):
         min_i = i
@@ -17,18 +18,22 @@ def selection_sort(xs):
             xs[i], xs[min_i] = xs[min_i], xs[i]
     return xs
 
+
 _ALGORITHMS = [
     SortingAlgorithm('selection_sort', 'Selection sort', selection_sort),
 ]
+
 
 def _parse_args(args=None):
     if args is None:
         args = sys.argv[1:]
     return list(map(int, args))
 
+
 def main(args=None):
     xs = _parse_args(args)
     print(selection_sort(list(xs)))
+
 
 if __name__ == '__main__':
     main()

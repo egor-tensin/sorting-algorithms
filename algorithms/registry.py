@@ -5,10 +5,13 @@
 
 from . import impl
 
+
 _ALL_ALGORITHMS = impl.refresh_algorithms()
+
 
 def get_codenames():
     return _ALL_ALGORITHMS.keys()
+
 
 def get(codename):
     return _ALL_ALGORITHMS[codename]

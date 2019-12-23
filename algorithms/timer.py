@@ -6,8 +6,10 @@
 import gc
 import time
 
+
 def get_timestamp():
     return time.perf_counter()
+
 
 class Timer:
     def __init__(self, dest, iterations=1):

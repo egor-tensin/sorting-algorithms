@@ -9,7 +9,9 @@ from pkgutil import iter_modules
 
 from .. import algorithm
 
+
 _ALGORITHMS_NAME = '_ALGORITHMS'
+
 
 def refresh_algorithms():
     all_algorithms = {}

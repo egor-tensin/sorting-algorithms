@@ -7,6 +7,7 @@ import sys
 
 from ..algorithm import SortingAlgorithm
 
+
 def bubble_sort(xs):
     while True:
         swapped = False
@@ -17,6 +18,7 @@ def bubble_sort(xs):
         if not swapped:
             break
     return xs
+
 
 def bubble_sort_optimized(xs):
     n = len(xs)
@@ -31,20 +33,24 @@ def bubble_sort_optimized(xs):
             break
     return xs
 
+
 _ALGORITHMS = [
     SortingAlgorithm('bubble_sort', 'Bubble sort', bubble_sort),
     SortingAlgorithm('bubble_sort_optimized', 'Bubble sort (optimized)', bubble_sort_optimized),
 ]
+
 
 def _parse_args(args=None):
     if args is None:
         args = sys.argv[1:]
     return list(map(int, args))
 
+
 def main(args=None):
     xs = _parse_args(args)
     print(bubble_sort(list(xs)))
     print(bubble_sort_optimized(list(xs)))
+
 
 if __name__ == '__main__':
     main()
