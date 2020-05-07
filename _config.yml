@@ -1,8 +1,7 @@
+# Jekyll
 plugins:
   - jekyll-github-metadata
   - jekyll-remote-theme
-
-remote_theme: egor-tensin/jekyll-theme
 
 exclude:
   - .travis.yml
@@ -14,18 +13,23 @@ exclude:
   - serve.sh
   - README.md
 
-minified_externals: true
+# jekyll-github-metadata
+repository: egor-tensin/sorting-algorithms
+# jekyll-remote-theme
+remote_theme: egor-tensin/jekyll-theme
 
+# egor-tensin/jekyll-theme
 bootstrap_version: 3.3.7
 jquery_version: 1.12.4
 html5shiv_version: 3.7.3
 respond_version: 1.4.2
 
+minified_externals: true
+
 project:
   name: Sorting algorithms
   description: Getting the hang out of (sorting) algorithms
 baseurl: /sorting-algorithms
-repository: egor-tensin/sorting-algorithms
 personal_info:
   name: Egor Tensin
   email: Egor.Tensin@gmail.com
