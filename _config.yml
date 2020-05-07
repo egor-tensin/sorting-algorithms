@@ -5,12 +5,9 @@ plugins:
 
 exclude:
   - .travis.yml
-  - build.sh
   - Gemfile
   - Gemfile.lock
   - LICENSE.txt
-  - serve.bat
-  - serve.sh
   - README.md
 
 # jekyll-github-metadata
