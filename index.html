@@ -1,6 +1,6 @@
 ---
 title: Main page
-layout: default
+layout: plain
 groups:
   - navbar
 navbar_link: <span class="glyphicon glyphicon-home"></span>&nbsp;Main page
@@ -210,8 +210,8 @@ corresponding algorithm.</p>
     {% capture stem %}{{ algorithm.codename }}_{{ iterations }}_{{ input_kind }}_{{ algorithm.min_length }}_{{ algorithm.max_length }}{% endcapture %}
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="thumbnail">
-        <a class="thumbnail" href="{{ site.baseurl }}/img/plots/full_size/{{ stem }}.png">
-          <img class="img-responsive" src="{{ site.baseurl }}/img/plots/preview/{{ stem }}.png" alt="{{ algorithm.display_name | escape }}, {{ iterations }} iterations, {{ input_kind }} case"/>
+        <a class="thumbnail" href="{{ site.baseurl }}/assets/img/plots/full_size/{{ stem }}.png">
+          <img class="img-responsive" src="{{ site.baseurl }}/assets/img/plots/preview/{{ stem }}.png" alt="{{ algorithm.display_name | escape }}, {{ iterations }} iterations, {{ input_kind }} case"/>
         </a>
         <div class="caption">
           <strong>{{ algorithm.display_name }}</strong><br/>
