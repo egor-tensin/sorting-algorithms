@@ -6,8 +6,8 @@ Hosted on [GitHub Pages] at https://egor-tensin.github.io/sorting-algorithms/.
 
 [GitHub Pages]: https://pages.github.com
 
-Prerequisites
--------------
+Development
+-----------
 
 [Jekyll] is used to build a set of static HTML pages from a collection of
 templates and resources.
@@ -19,52 +19,34 @@ be installed by executing
 
 in the project's root directory.
 
-[Jekyll]: https://jekyllrb.com/
-[Bundler]: http://bundler.io/
-
-Usage
------
-
-To run a local web server, execute
+To run a local web server, run
 
     bundle exec jekyll serve --watch --drafts --config _config.yml,_config_dev.yml
 
-in the project's root directory.
 You can then review your changes at http://localhost:4000/.
 
-If you can't get Jekyll to properly `--watch` for file modifications on
-Windows, try adding `--force_polling` to `jekyll`s options:
+Or you can use [jekyll-docker] to set up a development environment in Docker
+and not bother with installing everything locally.
 
-    bundle exec jekyll serve --watch --force_polling --drafts --config _config.yml,_config_dev.yml
+[jekyll-theme] is used as a remote Jekyll theme.
 
-It might still not work though, but you can always re-run `jekyll` manually.
-
-Note that `_config_dev.yml` is included to rewrite some of the `site` fields
-from `_config.yml` during development.
-In particular, it
-
-* sets `minified_externals` to `false` so that the properly formatted versions
-of external CSS stylesheets and JavaScript files are included instead of the
-`min`ified versions,
-* sets `baseurl` to an empty string so that the website can be accessed from
-local web server's root directory (i.e. from http://localhost:4000/ instead of
-http://localhost:4000/sorting-algorithms/).
+[Jekyll]: https://jekyllrb.com/
+[Bundler]: http://bundler.io/
+[jekyll-docker]: https://github.com/egor-tensin/jekyll-docker
+[jekyll-theme]: https://github.com/egor-tensin/jekyll-theme
 
 ### Access via file://
 
 Jekyll doesn't provide native support for generating a static website which can
 be browsed without running an instance of Jekyll's web server.
-One easy workaround is be to `wget` the website and convert the links:
+One easy workaround is to `wget` the website and convert the links:
 
-    wget --convert-links --recursive http://localhost:4000/
+    wget --no-verbose --recursive --convert-links --adjust-extension -- http://localhost:4000/
 
 License
 -------
 
 Distributed under the MIT License.
 See [LICENSE.txt] for details.
-
-This website is build upon the Twitter Bootstrap framework, which is also MIT
-Licensed and copyright 2015 Twitter.
 
 [LICENSE.txt]: LICENSE.txt
