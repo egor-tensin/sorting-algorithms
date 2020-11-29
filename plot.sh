@@ -34,7 +34,7 @@ main() {
     local input_kind
     for input_kind in best average worst; do
         local output_path="$script_dir/${algorithm}_${iterations}_${input_kind}_${min}_${max}.png"
-        python3 "$script_dir/plot.py"  \
+        python "$script_dir/plot.py"   \
             "$algorithm"               \
             --input "$input_kind"      \
             --min "$min" --max "$max"  \
