@@ -1,7 +1,7 @@
 Sorting algorithms
 ==================
 
-[![Test](https://github.com/egor-tensin/sorting-algorithms/workflows/Test/badge.svg)](https://github.com/egor-tensin/sorting-algorithms/actions?query=workflow%3ATest)
+[![Test](https://github.com/egor-tensin/sorting-algorithms/actions/workflows/test.yml/badge.svg)](https://github.com/egor-tensin/sorting-algorithms/actions/workflows/test.yml)
 
 Gettting the hang out of (sorting) algorithms.
 See also https://egor-tensin.github.io/sorting-algorithms/.
