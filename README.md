@@ -1,7 +1,7 @@
 Sorting algorithms
 ==================
 
-[![Jekyll](https://github.com/egor-tensin/sorting-algorithms/workflows/Jekyll/badge.svg)](https://github.com/egor-tensin/sorting-algorithms/actions?query=workflow%3AJekyll)
+[![Jekyll](https://github.com/egor-tensin/sorting-algorithms/actions/workflows/jekyll.yml/badge.svg)](https://github.com/egor-tensin/sorting-algorithms/actions/workflows/jekyll.yml)
 
 Getting the hang out of (sorting) algorithms.
 Hosted on [GitHub Pages] at https://egor-tensin.github.io/sorting-algorithms/.
