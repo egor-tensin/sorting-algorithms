@@ -10,7 +10,6 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
     strategy:
       matrix:
         ruby-version: [2.5, 2.6]
@@ -18,6 +17,7 @@ jobs:
         include:
           - {version: Gemfile, gemfile: Gemfile}
           - {version: latest, gemfile: .ci/Gemfile}
+    runs-on: ubuntu-18.04
     name: 'Build / ${{ matrix.ruby-version }} / ${{ matrix.version }}'
     env:
       BUNDLE_GEMFILE: '${{ matrix.gemfile }}'
