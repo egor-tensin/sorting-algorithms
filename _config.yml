@@ -15,7 +15,7 @@ plugins:
 # jekyll-github-metadata
 repository: egor-tensin/sorting-algorithms
 # jekyll-remote-theme
-remote_theme: egor-tensin/jekyll-theme@bf361a5d763614873a605ae8f6b8d4c26b30de24
+remote_theme: egor-tensin/jekyll-theme@6bf7c39c874004dd87d4c661018acf2285c8e135
 
 # Theme settings
 settings:
@@ -29,7 +29,7 @@ settings:
     email: Egor.Tensin@gmail.com
   3rdparty:
     versions:
-      bootstrap: 3.3.7
+      bootstrap: 3.4.1
       jquery: 1.12.4
       html5shiv: 3.7.3
       respond: 1.4.2
