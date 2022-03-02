@@ -4,6 +4,7 @@ baseurl: /sorting-algorithms
 exclude:
   - Gemfile
   - Gemfile.lock
+  - Makefile
   - README.md
   - vendor/
 
