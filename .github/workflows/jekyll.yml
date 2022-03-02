@@ -9,7 +9,7 @@ jobs:
   build:
     strategy:
       matrix:
-        ruby-version: [2.5, 2.6, 2.7]
+        ruby-version: [2.6, 2.7]
         version: [Gemfile, latest]
         include:
           - {version: Gemfile, gemfile: Gemfile}
