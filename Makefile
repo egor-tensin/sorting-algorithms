@@ -43,3 +43,7 @@ URL := http://localhost:4000/sorting-algorithms/
 .PHONY: wget
 wget:
 	wget --no-verbose --recursive --no-parent --convert-links --adjust-extension -e robots=off --directory-prefix=.wget -- '$(call escape,$(URL))'
+
+.PHONY: view
+view:
+	xdg-open '$(call escape,$(URL))' &> /dev/null
