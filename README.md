@@ -3,7 +3,7 @@ Sorting algorithms
 
 [![CI](https://github.com/egor-tensin/sorting-algorithms/actions/workflows/ci.yml/badge.svg)](https://github.com/egor-tensin/sorting-algorithms/actions/workflows/ci.yml)
 
-Gettting the hang out of (sorting) algorithms.
+Getting the hang out of (sorting) algorithms.
 See also https://egor-tensin.github.io/sorting-algorithms/.
 
 Prerequisites
