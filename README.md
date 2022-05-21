@@ -4,7 +4,7 @@ Sorting algorithms
 [![CI](https://github.com/egor-tensin/sorting-algorithms/actions/workflows/ci.yml/badge.svg)](https://github.com/egor-tensin/sorting-algorithms/actions/workflows/ci.yml)
 
 Getting the hang out of (sorting) algorithms.
-See also https://egor-tensin.github.io/sorting-algorithms/.
+See also https://egort.name/sorting-algorithms/.
 
 Prerequisites
 -------------
@@ -88,7 +88,7 @@ Plotting
 --------
 
 You can generate similar plots you might've seen at
-https://egor-tensin.github.io/sorting-algorithms/ using "plot.py".
+https://egort.name/sorting-algorithms/ using "plot.py".
 Consult the output of `plot.py --help` to learn how to use the script.
 A few usage examples are listed below.
 
