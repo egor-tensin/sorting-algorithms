@@ -9,7 +9,7 @@ Hosted at https://egort.name/sorting-algorithms/.
 Development
 -----------
 
-This is a "static" website, generated using [Jekyll].
+This is a static website, generated using [Jekyll].
 
 Make sure you have Ruby and [Bundler] set up.
 [GNU Make] is used for shortcuts.
