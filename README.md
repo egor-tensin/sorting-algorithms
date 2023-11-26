@@ -4,7 +4,7 @@ Sorting algorithms
 [![Jekyll](https://github.com/egor-tensin/sorting-algorithms/actions/workflows/jekyll.yml/badge.svg)](https://github.com/egor-tensin/sorting-algorithms/actions/workflows/jekyll.yml)
 
 Getting the hang out of (sorting) algorithms.
-Hosted at https://egort.name/sorting-algorithms/.
+Hosted at https://tensin.name/sorting-algorithms/.
 
 Development
 -----------
