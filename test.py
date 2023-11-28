@@ -12,8 +12,10 @@ import sys
 from algorithms.input_kind import InputKind
 import algorithms.registry as registry
 
+
 _DEFAULT_INPUT_KIND = InputKind.AVERAGE
 _DEFAULT_LENGTH = 100
+
 
 def test(algorithm, input_kind=_DEFAULT_INPUT_KIND, length=_DEFAULT_LENGTH):
     if isinstance(algorithm, str):
@@ -24,6 +26,7 @@ def test(algorithm, input_kind=_DEFAULT_INPUT_KIND, length=_DEFAULT_LENGTH):
         output = output.tolist()
     print(output)
 
+
 def _parse_non_negative_integer(s):
     try:
         n = int(s)
@@ -33,27 +36,33 @@ def _parse_non_negative_integer(s):
         raise argparse.ArgumentTypeError('must be a non-negative integer')
     return n
 
+
 def _parse_input_kind(s):
     try:
         return InputKind(s)
     except ValueError:
         raise argparse.ArgumentTypeError('invalid input kind: ' + str(s))
 
+
 def _format_algorithm(codename):
     return '* {}: {}'.format(codename, registry.get(codename).display_name)
+
 
 def _format_available_algorithms():
     descr = 'available algorithms (in the CODENAME: DISPLAY_NAME format):\n'
     return descr + '\n'.join(map(
         _format_algorithm, sorted(registry.get_codenames())))
 
+
 def _format_description():
     return _format_available_algorithms()
+
 
 def _create_argument_parser():
     return argparse.ArgumentParser(
         description=_format_description(),
         formatter_class=argparse.RawDescriptionHelpFormatter)
+
 
 def _parse_args(args=None):
     if args is None:
@@ -75,8 +84,10 @@ def _parse_args(args=None):
 
     return parser.parse_args(args)
 
+
 def main(args=None):
     test(**vars(_parse_args(args)))
+
 
 if __name__ == '__main__':
     main()
