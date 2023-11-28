@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Copyright (c) 2015 Egor Tensin <Egor.Tensin@gmail.com>
 # This file is part of the "Sorting algorithms" project.
 # For details, see https://github.com/egor-tensin/sorting-algorithms.
