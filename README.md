@@ -51,9 +51,6 @@ Testing
 
 You can test each of the algorithms above by passing a sequence of integer
 numbers to the corresponding script.
-Notice that you must invoke the scripts from the top-level directory using
-`python -m`.
-For example:
 
 ```
 > python -m algorithms.impl.heapsort 5 3 4 1 2
@@ -72,15 +69,14 @@ For example:
 You can use "test.py" to quickly generate an input list of some kind and
 display the result of executing one of the implemented algorithms.
 Consult the output of `test.py --help` to learn how to use the script.
-A few usage examples are listed below.
 
 ```
-> test.py --input best --length 1000 median_heaps
+> ./test.py --input best --length 1000 median_heaps
 499.5
 ```
 
 ```
-> test.py --input worst --length 10 quicksort_random
+> ./test.py --input worst --length 10 quicksort_random
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
@@ -90,14 +86,13 @@ Plotting
 You can generate similar plots you might've seen at
 https://tensin.name/sorting-algorithms/ using "plot.py".
 Consult the output of `plot.py --help` to learn how to use the script.
-A few usage examples are listed below.
 
 ```
-> plot.py merge_sort --min 0 --max 200 --input best --iterations 1000
+> ./plot.py merge_sort --min 0 --max 200 --input best --iterations 1000
 ```
 
 ```
-> plot.py median_sorting --min 0 --max 200 --input average --iterations 100 --output median_sorting.png
+> ./plot.py median_sorting --min 0 --max 200 --input average --iterations 100 --output median_sorting.png
 ```
 
 If you're having problems using the script (like having excessive noise in the
