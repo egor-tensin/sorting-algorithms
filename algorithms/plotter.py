@@ -7,41 +7,19 @@ import matplotlib.pyplot as plt
 
 
 class PlotBuilder:
-    @staticmethod
-    def set_xlabel(s):
-        plt.xlabel(s)
+    def __init__(self):
+        self._fig, self._ax = plt.subplots(figsize=(8, 6), dpi=200)
+        self._ax.grid(alpha=0.8, linestyle=':')
 
-    @staticmethod
-    def set_ylabel(s):
-        plt.ylabel(s)
-
-    @staticmethod
-    def set_yticklabels_scientific():
-        plt.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
-
-    @staticmethod
-    def show_grid():
-        plt.grid()
-
-    @staticmethod
-    def set_title(s):
-        plt.title(s)
-
-    @staticmethod
-    def set_suptitle(s):
-        plt.suptitle(s)
-
-    @staticmethod
-    def plot(xs, ys):
-        plt.plot(xs, ys)
+    def plot(self, title, xlabel, ylabel, xs, ys):
+        self._ax.set_title(title)
+        self._ax.set_xlabel(xlabel)
+        self._ax.set_ylabel(ylabel)
+        self._ax.plot(xs, ys)
 
     @staticmethod
     def show():
         plt.show()
 
-    @staticmethod
-    def save(output_path, tight=False):
-        if tight:
-            plt.savefig(output_path, bbox_inches='tight')
-        else:
-            plt.savefig(output_path)
+    def save(self, output_path):
+        self._fig.savefig(output_path)

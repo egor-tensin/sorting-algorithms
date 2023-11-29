@@ -132,12 +132,10 @@ class AlgorithmParameters:
         ys = [y * units.get_factor() for y in ys]
 
         plot_builder = PlotBuilder()
-        plot_builder.show_grid()
-        plot_builder.set_xlabel(self._format_plot_xlabel())
-        plot_builder.set_ylabel(self._format_plot_ylabel(units))
-        #plot_builder.set_yticklabels_scientific()
-        plot_builder.set_title(self._format_plot_title())
-        plot_builder.plot(xs, ys)
+        title = self._format_plot_title()
+        xlabel = self._format_plot_xlabel()
+        ylabel = self._format_plot_ylabel(units)
+        plot_builder.plot(title, xlabel, ylabel, xs, ys)
         if output_path is None:
             plot_builder.show()
         else:
