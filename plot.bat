@@ -29,12 +29,14 @@ if "%~4" == "" (
     set "max=%~4"
 )
 
+mkdir /p img
+
 for %%i in (best average worst) do (
     plot.py "%algorithm%" ^
         --input "%%i" ^
         --min "%min%" --max "%max%" ^
         --iterations "%iterations%" ^
-        --output "%algorithm%_%iterations%_%%i_%min%_%max%.png" || exit /b !errorlevel!
+        --output "img\%algorithm%_%iterations%_%%i_%min%_%max%.png" || exit /b !errorlevel!
 )
 
 exit /b 0
