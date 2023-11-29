@@ -13,14 +13,6 @@ Prerequisites
 * [matplotlib]
 * [numpy] (required by [matplotlib])
 
-The versions below have been verified to work properly.
-
-| Software     | Version
-| ------------ | -------
-| CPython      | 3.5.1
-| [matplotlib] | 1.5.1
-| [numpy]      | 1.11.0
-
 [matplotlib]: http://matplotlib.org/
 [numpy]: http://www.numpy.org/
 
