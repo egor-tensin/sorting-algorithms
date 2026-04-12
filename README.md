@@ -5,6 +5,7 @@ Sorting algorithms
 
 Getting the hang out of (sorting) algorithms.
 Hosted at https://tensin.name/sorting-algorithms/.
+The code behind the graphs is in the `master` branch.
 
 Development
 -----------
