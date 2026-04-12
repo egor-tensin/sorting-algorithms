@@ -1,8 +1,6 @@
 name: Maintenance
 
 on:
-  # Temporary fix to make GH realize there's a new workflow:
-  push:
   schedule:
     # Weekly, at 02:30 UTC on Friday (somewhat randomly chosen).
     - cron: '30 02 * * 5'
