@@ -1,6 +1,8 @@
 name: Maintenance
 
 on:
+  # As of April '26, this won't run until this is the default branch.
+  # workflow_dispatch doesn't work neither.
   schedule:
     # Weekly, at 02:30 UTC on Friday (somewhat randomly chosen).
     - cron: '30 02 * * 5'
