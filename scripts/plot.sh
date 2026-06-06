@@ -33,7 +33,7 @@ main() {
     [ "$#" -ge 4 ] && max="$4"
 
     cd -- "$script_dir/.."
-    mkdir -p -- img
+    mkdir -p -- out
 
     local input_kind
     for input_kind in best average worst; do
@@ -43,7 +43,7 @@ main() {
             --input "$input_kind"         \
             --min "$min" --max "$max"     \
             --iterations "$iterations"    \
-            --output "img/$output_name"
+            --output "out/$output_name"
     done
 }
 
