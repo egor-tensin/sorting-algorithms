@@ -29,6 +29,7 @@ if "%~4" == "" (
     set "max=%~4"
 )
 
+cd ..
 mkdir /p img
 
 for %%i in (best average worst) do (

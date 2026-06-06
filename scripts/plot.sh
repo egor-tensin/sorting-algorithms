@@ -32,17 +32,18 @@ main() {
     local max="$default_max"
     [ "$#" -ge 4 ] && max="$4"
 
-    mkdir -p -- "$script_dir/img"
+    cd -- "$script_dir/.."
+    mkdir -p -- img
 
     local input_kind
     for input_kind in best average worst; do
         local output_name="${algorithm}_${iterations}_${input_kind}_${min}_${max}.png"
-        python "$script_dir/plot.py"   \
-            "$algorithm"               \
-            --input "$input_kind"      \
-            --min "$min" --max "$max"  \
-            --iterations "$iterations" \
-            --output "$script_dir/img/$output_name"
+        python -m algorithms.scripts.plot \
+            "$algorithm"                  \
+            --input "$input_kind"         \
+            --min "$min" --max "$max"     \
+            --iterations "$iterations"    \
+            --output "img/$output_name"
     done
 }
 

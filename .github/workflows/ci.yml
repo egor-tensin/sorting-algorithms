@@ -24,4 +24,4 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run tests
-        run: ./.ci/plot.sh
+        run: ./scripts/plot_all.sh

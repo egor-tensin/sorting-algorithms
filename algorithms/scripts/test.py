@@ -1,37 +1,30 @@
 #!/usr/bin/env python3
 
-# Copyright (c) 2015 Egor Tensin <Egor.Tensin@gmail.com>
+# Copyright (c) 2016 Egor Tensin <Egor.Tensin@gmail.com>
 # This file is part of the "Sorting algorithms" project.
 # For details, see https://github.com/egor-tensin/sorting-algorithms.
 # Distributed under the MIT License.
 
+from array import array
 import argparse
 import sys
 
-from algorithms.input_kind import InputKind
-from algorithms.params import AlgorithmParameters
-import algorithms.registry as registry
+from ..input_kind import InputKind
+import ..registry as registry
 
 
-_DEFAULT_ITERATIONS = 100
 _DEFAULT_INPUT_KIND = InputKind.AVERAGE
-_DEFAULT_MIN_LENGTH = 0
-_DEFAULT_MAX_LENGTH = 200
+_DEFAULT_LENGTH = 100
 
 
-def plot_algorithm(algorithm, input_kind=_DEFAULT_INPUT_KIND,
-                   min_len=_DEFAULT_MIN_LENGTH,
-                   max_len=_DEFAULT_MAX_LENGTH,
-                   iterations=_DEFAULT_ITERATIONS,
-                   output_path=None):
-
+def test(algorithm, input_kind=_DEFAULT_INPUT_KIND, length=_DEFAULT_LENGTH):
     if isinstance(algorithm, str):
         algorithm = registry.get(algorithm)
-
-    params = AlgorithmParameters(algorithm, min_len, max_len,
-                                 input_kind=input_kind,
-                                 iterations=iterations)
-    params.plot_running_time(output_path)
+    xs = algorithm.gen_input(length, input_kind)
+    output = algorithm.function(xs)
+    if isinstance(output, array):
+        output = output.tolist()
+    print(output)
 
 
 def _parse_non_negative_integer(s):
@@ -41,16 +34,6 @@ def _parse_non_negative_integer(s):
         raise argparse.ArgumentTypeError('must be a non-negative integer: ' + str(s))
     if n < 0:
         raise argparse.ArgumentTypeError('must be a non-negative integer')
-    return n
-
-
-def _parse_positive_integer(s):
-    try:
-        n = int(s)
-    except ValueError:
-        raise argparse.ArgumentTypeError('must be a positive integer: ' + str(s))
-    if n < 1:
-        raise argparse.ArgumentTypeError('must be a positive integer')
     return n
 
 
@@ -89,30 +72,21 @@ def _parse_args(args=None):
     parser.add_argument('algorithm', metavar='CODENAME',
                         choices=registry.get_codenames(),
                         help='algorithm codename')
-    parser.add_argument('--iterations', '-r', metavar='N',
-                        type=_parse_positive_integer,
-                        default=_DEFAULT_ITERATIONS,
-                        help='set number of algorithm iterations')
     parser.add_argument('--input', '-i', dest='input_kind',
                         choices=InputKind,
-                        type=_parse_input_kind, default=_DEFAULT_INPUT_KIND,
+                        type=_parse_input_kind,
+                        default=_DEFAULT_INPUT_KIND,
                         help='specify input kind')
-    parser.add_argument('--min', '-a', metavar='N', dest='min_len',
+    parser.add_argument('--length', '-l', '-n', metavar='N',
                         type=_parse_non_negative_integer,
-                        default=_DEFAULT_MIN_LENGTH,
-                        help='set min input length')
-    parser.add_argument('--max', '-b', metavar='N', dest='max_len',
-                        type=_parse_non_negative_integer,
-                        default=_DEFAULT_MAX_LENGTH,
-                        help='set max input length')
-    parser.add_argument('--output', '-o', metavar='PATH', dest='output_path',
-                        help='set plot file path')
+                        default=_DEFAULT_LENGTH,
+                        help='set input length')
 
     return parser.parse_args(args)
 
 
 def main(args=None):
-    plot_algorithm(**vars(_parse_args(args)))
+    test(**vars(_parse_args(args)))
 
 
 if __name__ == '__main__':

@@ -39,7 +39,7 @@ main() {
     local algorithm
     for algorithm in ${algorithm_list[@]+"${algorithm_list[@]}"}; do
         echo "Plotting algorithm $algorithm..."
-        "$script_dir/../plot.sh" "$algorithm"
+        "$script_dir/plot.sh" "$algorithm"
     done
 }
 
