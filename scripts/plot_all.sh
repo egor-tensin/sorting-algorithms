@@ -26,16 +26,7 @@ declare -a algorithm_list=(
     selection_sort
 )
 
-fix_matplotlib() {
-    # Get rid of:
-    # tkinter.TclError: no display name and no $DISPLAY environment variable
-    mkdir -p -- ~/.config/matplotlib
-    echo 'backend: Agg' > ~/.config/matplotlib/matplotlibrc
-}
-
 main() {
-    fix_matplotlib
-
     local algorithm
     for algorithm in ${algorithm_list[@]+"${algorithm_list[@]}"}; do
         echo "Plotting algorithm $algorithm..."
