@@ -14,7 +14,7 @@ class Algorithm:
 
     @staticmethod
     def gen_input(n, case=input_kind.InputKind.AVERAGE):
-        #raise NotImplementedError('input generation is not defined for a generic algorithm')
+        # raise NotImplementedError('input generation is not defined for a generic algorithm')
         return input_kind.gen_input_for_sorting(n, case)
 
 

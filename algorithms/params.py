@@ -19,11 +19,11 @@ class TimeUnits(Enum):
 
     def get_factor(self):
         if self is TimeUnits.SECONDS:
-            return 1.
+            return 1.0
         if self is TimeUnits.MILLISECONDS:
-            return 1000.
+            return 1000.0
         if self is TimeUnits.MICROSECONDS:
-            return 1000000.
+            return 1000000.0
         raise NotImplementedError('invalid time units: ' + str(self))
 
     def __str__(self):
@@ -31,8 +31,9 @@ class TimeUnits(Enum):
 
 
 class AlgorithmParameters:
-    def __init__(self, algorithm, min_len, max_len,
-                 input_kind=InputKind.AVERAGE, iterations=1):
+    def __init__(
+        self, algorithm, min_len, max_len, input_kind=InputKind.AVERAGE, iterations=1
+    ):
 
         if isinstance(algorithm, str):
             algorithm = registry.get(algorithm)
@@ -111,8 +112,7 @@ class AlgorithmParameters:
         return 'Running time ({})'.format(units)
 
     def _format_plot_title(self):
-        return '{}, {} case'.format(
-            self.algorithm.display_name, self.input_kind)
+        return '{}, {} case'.format(self.algorithm.display_name, self.input_kind)
 
     def _format_plot_suptitle(self):
         return self.algorithm.display_name

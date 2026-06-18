@@ -7,7 +7,6 @@ from array import array
 from enum import Enum
 from random import seed, sample
 
-
 seed()
 
 

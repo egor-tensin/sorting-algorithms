@@ -36,7 +36,9 @@ def bubble_sort_optimized(xs):
 
 _ALGORITHMS = [
     SortingAlgorithm('bubble_sort', 'Bubble sort', bubble_sort),
-    SortingAlgorithm('bubble_sort_optimized', 'Bubble sort (optimized)', bubble_sort_optimized),
+    SortingAlgorithm(
+        'bubble_sort_optimized', 'Bubble sort (optimized)', bubble_sort_optimized
+    ),
 ]
 
 

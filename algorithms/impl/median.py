@@ -46,7 +46,9 @@ def calc_median_sorting(xs):
 
 
 _ALGORITHMS = [
-    Algorithm('median_sorting', 'Median value (using explicit sorting)', calc_median_sorting),
+    Algorithm(
+        'median_sorting', 'Median value (using explicit sorting)', calc_median_sorting
+    ),
     Algorithm('median_heaps', 'Median value (using heaps)', calc_median_heaps),
 ]
 

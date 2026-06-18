@@ -8,7 +8,6 @@ import sys
 
 from ..algorithm import SortingAlgorithm
 
-
 seed()
 
 
@@ -76,11 +75,21 @@ def quicksort_random(xs):
 
 
 _ALGORITHMS = [
-    SortingAlgorithm('quicksort_first', 'Quicksort (first element as pivot)', quicksort_first),
-    SortingAlgorithm('quicksort_second', 'Quicksort (second element as pivot)', quicksort_second),
-    SortingAlgorithm('quicksort_middle', 'Quicksort (middle element as pivot)', quicksort_middle),
-    SortingAlgorithm('quicksort_last', 'Quicksort (last element as pivot)', quicksort_last),
-    SortingAlgorithm('quicksort_random', 'Quicksort (random element as pivot)', quicksort_random),
+    SortingAlgorithm(
+        'quicksort_first', 'Quicksort (first element as pivot)', quicksort_first
+    ),
+    SortingAlgorithm(
+        'quicksort_second', 'Quicksort (second element as pivot)', quicksort_second
+    ),
+    SortingAlgorithm(
+        'quicksort_middle', 'Quicksort (middle element as pivot)', quicksort_middle
+    ),
+    SortingAlgorithm(
+        'quicksort_last', 'Quicksort (last element as pivot)', quicksort_last
+    ),
+    SortingAlgorithm(
+        'quicksort_random', 'Quicksort (random element as pivot)', quicksort_random
+    ),
 ]
 
 

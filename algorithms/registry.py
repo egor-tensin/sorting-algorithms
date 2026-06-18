@@ -5,7 +5,6 @@
 
 from . import impl
 
-
 _ALL_ALGORITHMS = impl.refresh_algorithms()
 
 

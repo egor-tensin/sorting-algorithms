@@ -10,8 +10,7 @@ import argparse
 import sys
 
 from ..input_kind import InputKind
-import ..registry as registry
-
+from .. import registry
 
 _DEFAULT_INPUT_KIND = InputKind.AVERAGE
 _DEFAULT_LENGTH = 100
@@ -50,8 +49,7 @@ def _format_algorithm(codename):
 
 def _format_available_algorithms():
     descr = 'available algorithms (in the CODENAME: DISPLAY_NAME format):\n'
-    return descr + '\n'.join(map(
-        _format_algorithm, sorted(registry.get_codenames())))
+    return descr + '\n'.join(map(_format_algorithm, sorted(registry.get_codenames())))
 
 
 def _format_description():
@@ -61,7 +59,8 @@ def _format_description():
 def _create_argument_parser():
     return argparse.ArgumentParser(
         description=_format_description(),
-        formatter_class=argparse.RawDescriptionHelpFormatter)
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
 
 
 def _parse_args(args=None):
@@ -69,18 +68,30 @@ def _parse_args(args=None):
         args = sys.argv[1:]
     parser = _create_argument_parser()
 
-    parser.add_argument('algorithm', metavar='CODENAME',
-                        choices=registry.get_codenames(),
-                        help='algorithm codename')
-    parser.add_argument('--input', '-i', dest='input_kind',
-                        choices=InputKind,
-                        type=_parse_input_kind,
-                        default=_DEFAULT_INPUT_KIND,
-                        help='specify input kind')
-    parser.add_argument('--length', '-l', '-n', metavar='N',
-                        type=_parse_non_negative_integer,
-                        default=_DEFAULT_LENGTH,
-                        help='set input length')
+    parser.add_argument(
+        'algorithm',
+        metavar='CODENAME',
+        choices=registry.get_codenames(),
+        help='algorithm codename',
+    )
+    parser.add_argument(
+        '--input',
+        '-i',
+        dest='input_kind',
+        choices=InputKind,
+        type=_parse_input_kind,
+        default=_DEFAULT_INPUT_KIND,
+        help='specify input kind',
+    )
+    parser.add_argument(
+        '--length',
+        '-l',
+        '-n',
+        metavar='N',
+        type=_parse_non_negative_integer,
+        default=_DEFAULT_LENGTH,
+        help='set input length',
+    )
 
     return parser.parse_args(args)
 
