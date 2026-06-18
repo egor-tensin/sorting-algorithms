@@ -63,7 +63,7 @@ def _siftdown(xs, start, end):
 
 
 _ALGORITHMS = [
-    SortingAlgorithm('heapsort', 'Heapsort', heapsort),
+    SortingAlgorithm("heapsort", "Heapsort", heapsort),
 ]
 
 
@@ -78,5 +78,5 @@ def main(args=None):
     print(heapsort(list(xs)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

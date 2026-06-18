@@ -33,7 +33,7 @@ def merge_sort(xs):
 
 
 _ALGORITHMS = [
-    SortingAlgorithm('merge_sort', 'Merge sort', merge_sort),
+    SortingAlgorithm("merge_sort", "Merge sort", merge_sort),
 ]
 
 
@@ -48,5 +48,5 @@ def main(args=None):
     print(merge_sort(list(xs)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

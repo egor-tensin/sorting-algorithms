@@ -20,7 +20,7 @@ def selection_sort(xs):
 
 
 _ALGORITHMS = [
-    SortingAlgorithm('selection_sort', 'Selection sort', selection_sort),
+    SortingAlgorithm("selection_sort", "Selection sort", selection_sort),
 ]
 
 
@@ -35,5 +35,5 @@ def main(args=None):
     print(selection_sort(list(xs)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

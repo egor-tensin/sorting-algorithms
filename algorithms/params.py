@@ -13,9 +13,9 @@ from .timer import Timer
 
 
 class TimeUnits(Enum):
-    SECONDS = 'seconds'
-    MILLISECONDS = 'milliseconds'
-    MICROSECONDS = 'microseconds'
+    SECONDS = "seconds"
+    MILLISECONDS = "milliseconds"
+    MICROSECONDS = "microseconds"
 
     def get_factor(self):
         if self is TimeUnits.SECONDS:
@@ -24,7 +24,7 @@ class TimeUnits(Enum):
             return 1000.0
         if self is TimeUnits.MICROSECONDS:
             return 1000000.0
-        raise NotImplementedError('invalid time units: ' + str(self))
+        raise NotImplementedError("invalid time units: " + str(self))
 
     def __str__(self):
         return self.value
@@ -56,12 +56,12 @@ class AlgorithmParameters:
     @min_len.setter
     def min_len(self, val):
         if not isinstance(val, Integral):
-            raise TypeError('must be an integral value')
+            raise TypeError("must be an integral value")
         val = int(val)
         if val < 0:
-            raise ValueError('must be non-negative')
+            raise ValueError("must be non-negative")
         if self.max_len is not None and self.max_len < val:
-            raise ValueError('must not be greater than the maximum length')
+            raise ValueError("must not be greater than the maximum length")
         self._min_len = val
 
     @property
@@ -71,12 +71,12 @@ class AlgorithmParameters:
     @max_len.setter
     def max_len(self, val):
         if not isinstance(val, Integral):
-            raise TypeError('must be an integral value')
+            raise TypeError("must be an integral value")
         val = int(val)
         if val < 0:
-            raise ValueError('must be non-negative')
+            raise ValueError("must be non-negative")
         if self.min_len is not None and self.min_len > val:
-            raise ValueError('must not be lesser than the minimum length')
+            raise ValueError("must not be lesser than the minimum length")
         self._max_len = val
 
     @property
@@ -86,10 +86,10 @@ class AlgorithmParameters:
     @iterations.setter
     def iterations(self, val):
         if not isinstance(val, Integral):
-            raise TypeError('must be an integral value')
+            raise TypeError("must be an integral value")
         val = int(val)
         if val < 1:
-            raise ValueError('must be positive')
+            raise ValueError("must be positive")
         self._iterations = val
 
     def measure_running_time(self):
@@ -105,14 +105,14 @@ class AlgorithmParameters:
 
     @staticmethod
     def _format_plot_xlabel():
-        return 'Input length'
+        return "Input length"
 
     @staticmethod
     def _format_plot_ylabel(units):
-        return 'Running time ({})'.format(units)
+        return "Running time ({})".format(units)
 
     def _format_plot_title(self):
-        return '{}, {} case'.format(self.algorithm.display_name, self.input_kind)
+        return "{}, {} case".format(self.algorithm.display_name, self.input_kind)
 
     def _format_plot_suptitle(self):
         return self.algorithm.display_name

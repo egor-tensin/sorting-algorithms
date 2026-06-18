@@ -30,9 +30,9 @@ def _parse_non_negative_integer(s):
     try:
         n = int(s)
     except ValueError:
-        raise argparse.ArgumentTypeError('must be a non-negative integer: ' + str(s))
+        raise argparse.ArgumentTypeError("must be a non-negative integer: " + str(s))
     if n < 0:
-        raise argparse.ArgumentTypeError('must be a non-negative integer')
+        raise argparse.ArgumentTypeError("must be a non-negative integer")
     return n
 
 
@@ -40,16 +40,16 @@ def _parse_input_kind(s):
     try:
         return InputKind(s)
     except ValueError:
-        raise argparse.ArgumentTypeError('invalid input kind: ' + str(s))
+        raise argparse.ArgumentTypeError("invalid input kind: " + str(s))
 
 
 def _format_algorithm(codename):
-    return '* {}: {}'.format(codename, registry.get(codename).display_name)
+    return "* {}: {}".format(codename, registry.get(codename).display_name)
 
 
 def _format_available_algorithms():
-    descr = 'available algorithms (in the CODENAME: DISPLAY_NAME format):\n'
-    return descr + '\n'.join(map(_format_algorithm, sorted(registry.get_codenames())))
+    descr = "available algorithms (in the CODENAME: DISPLAY_NAME format):\n"
+    return descr + "\n".join(map(_format_algorithm, sorted(registry.get_codenames())))
 
 
 def _format_description():
@@ -69,28 +69,28 @@ def _parse_args(args=None):
     parser = _create_argument_parser()
 
     parser.add_argument(
-        'algorithm',
-        metavar='CODENAME',
+        "algorithm",
+        metavar="CODENAME",
         choices=registry.get_codenames(),
-        help='algorithm codename',
+        help="algorithm codename",
     )
     parser.add_argument(
-        '--input',
-        '-i',
-        dest='input_kind',
+        "--input",
+        "-i",
+        dest="input_kind",
         choices=InputKind,
         type=_parse_input_kind,
         default=_DEFAULT_INPUT_KIND,
-        help='specify input kind',
+        help="specify input kind",
     )
     parser.add_argument(
-        '--length',
-        '-l',
-        '-n',
-        metavar='N',
+        "--length",
+        "-l",
+        "-n",
+        metavar="N",
         type=_parse_non_negative_integer,
         default=_DEFAULT_LENGTH,
-        help='set input length',
+        help="set input length",
     )
 
     return parser.parse_args(args)
@@ -100,5 +100,5 @@ def main(args=None):
     test(**vars(_parse_args(args)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

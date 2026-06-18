@@ -11,23 +11,23 @@ seed()
 
 
 class InputKind(Enum):
-    BEST, AVERAGE, WORST = 'best', 'average', 'worst'
+    BEST, AVERAGE, WORST = "best", "average", "worst"
 
     def __str__(self):
         return self.value
 
 
 def _gen_input_from(xs):
-    return array('l', xs)
+    return array("l", xs)
 
 
 def gen_input_for_sorting(n, case=InputKind.AVERAGE):
     if n < 0:
-        raise ValueError('input length cannot be less than zero')
+        raise ValueError("input length cannot be less than zero")
     if case is InputKind.BEST:
         return _gen_input_from(range(n))
     if case is InputKind.AVERAGE:
         return _gen_input_from(sample(range(n), n))
     if case is InputKind.WORST:
         return _gen_input_from(range(n - 1, -1, -1))
-    raise NotImplementedError('invalid input kind: ' + str(case))
+    raise NotImplementedError("invalid input kind: " + str(case))

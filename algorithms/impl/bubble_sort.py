@@ -35,9 +35,9 @@ def bubble_sort_optimized(xs):
 
 
 _ALGORITHMS = [
-    SortingAlgorithm('bubble_sort', 'Bubble sort', bubble_sort),
+    SortingAlgorithm("bubble_sort", "Bubble sort", bubble_sort),
     SortingAlgorithm(
-        'bubble_sort_optimized', 'Bubble sort (optimized)', bubble_sort_optimized
+        "bubble_sort_optimized", "Bubble sort (optimized)", bubble_sort_optimized
     ),
 ]
 
@@ -54,5 +54,5 @@ def main(args=None):
     print(bubble_sort_optimized(list(xs)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

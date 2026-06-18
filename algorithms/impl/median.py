@@ -47,9 +47,9 @@ def calc_median_sorting(xs):
 
 _ALGORITHMS = [
     Algorithm(
-        'median_sorting', 'Median value (using explicit sorting)', calc_median_sorting
+        "median_sorting", "Median value (using explicit sorting)", calc_median_sorting
     ),
-    Algorithm('median_heaps', 'Median value (using heaps)', calc_median_heaps),
+    Algorithm("median_heaps", "Median value (using heaps)", calc_median_heaps),
 ]
 
 
@@ -65,5 +65,5 @@ def main(args=None):
     print(calc_median_heaps(list(xs)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

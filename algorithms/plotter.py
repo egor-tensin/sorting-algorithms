@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 class PlotBuilder:
     def __init__(self):
         self._fig, self._ax = plt.subplots(figsize=(8, 6), dpi=200)
-        self._ax.grid(alpha=0.8, linestyle=':')
+        self._ax.grid(alpha=0.8, linestyle=":")
 
     def plot(self, title, xlabel, ylabel, xs, ys):
         self._ax.set_title(title)

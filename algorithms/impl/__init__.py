@@ -9,7 +9,7 @@ from pkgutil import iter_modules
 
 from .. import algorithm
 
-_ALGORITHMS_NAME = '_ALGORITHMS'
+_ALGORITHMS_NAME = "_ALGORITHMS"
 
 
 def refresh_algorithms():
@@ -18,7 +18,7 @@ def refresh_algorithms():
     for _, module_name, is_pkg in iter_modules([os.path.dirname(__file__)]):
         if is_pkg:
             continue
-        module = import_module('.' + module_name, __package__)
+        module = import_module("." + module_name, __package__)
         if hasattr(module, _ALGORITHMS_NAME):
             module_algorithms = getattr(module, _ALGORITHMS_NAME)
             for descr in module_algorithms:

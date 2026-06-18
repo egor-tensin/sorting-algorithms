@@ -18,7 +18,7 @@ def insertion_sort(xs):
 
 
 _ALGORITHMS = [
-    SortingAlgorithm('insertion_sort', 'Insertion sort', insertion_sort),
+    SortingAlgorithm("insertion_sort", "Insertion sort", insertion_sort),
 ]
 
 
@@ -33,5 +33,5 @@ def main(args=None):
     print(insertion_sort(list(xs)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
