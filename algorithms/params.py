@@ -24,7 +24,7 @@ class TimeUnits(Enum):
             return 1000.0
         if self is TimeUnits.MICROSECONDS:
             return 1000000.0
-        raise NotImplementedError("invalid time units: " + str(self))
+        raise NotImplementedError(f"invalid time units: {self}")
 
     def __str__(self):
         return self.value
@@ -109,10 +109,10 @@ class AlgorithmParameters:
 
     @staticmethod
     def _format_plot_ylabel(units):
-        return "Running time ({})".format(units)
+        return f"Running time ({units})"
 
     def _format_plot_title(self):
-        return "{}, {} case".format(self.algorithm.display_name, self.input_kind)
+        return f"{self.algorithm.display_name}, {self.input_kind} case"
 
     def _format_plot_suptitle(self):
         return self.algorithm.display_name

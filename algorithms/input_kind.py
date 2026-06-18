@@ -30,4 +30,4 @@ def gen_input_for_sorting(n, case=InputKind.AVERAGE):
         return _gen_input_from(sample(range(n), n))
     if case is InputKind.WORST:
         return _gen_input_from(range(n - 1, -1, -1))
-    raise NotImplementedError("invalid input kind: " + str(case))
+    raise NotImplementedError(f"invalid input kind: {case}")

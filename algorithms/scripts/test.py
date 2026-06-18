@@ -30,7 +30,7 @@ def _parse_non_negative_integer(s):
     try:
         n = int(s)
     except ValueError:
-        raise argparse.ArgumentTypeError("must be a non-negative integer: " + str(s))
+        raise argparse.ArgumentTypeError(f"must be a non-negative integer: {s}")
     if n < 0:
         raise argparse.ArgumentTypeError("must be a non-negative integer")
     return n
@@ -40,11 +40,11 @@ def _parse_input_kind(s):
     try:
         return InputKind(s)
     except ValueError:
-        raise argparse.ArgumentTypeError("invalid input kind: " + str(s))
+        raise argparse.ArgumentTypeError(f"invalid input kind: {s}")
 
 
 def _format_algorithm(codename):
-    return "* {}: {}".format(codename, registry.get(codename).display_name)
+    return "* {codename}: {registry.get(codename).display_name}"
 
 
 def _format_available_algorithms():
