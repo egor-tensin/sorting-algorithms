@@ -9,7 +9,7 @@ See also https://tensin.name/sorting-algorithms/.
 Prerequisites
 -------------
 
-* Python 3.4 or higher
+* Python 3.6 or higher
 * [matplotlib]
 * [numpy] (required by [matplotlib])
 
