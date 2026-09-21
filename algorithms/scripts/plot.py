@@ -64,7 +64,7 @@ def _parse_input_kind(s):
 
 
 def _format_algorithm(codename):
-    return "* {codename}: {registry.get(codename).display_name}"
+    return f"* {codename}: {registry.get(codename).display_name}"
 
 
 def _format_available_algorithms():
