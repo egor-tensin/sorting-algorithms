@@ -58,17 +58,19 @@ numbers to the corresponding script.
 [1, 2, 3, 4, 5]
 ```
 
-You can use "test.py" to quickly generate an input list of some kind and
-display the result of executing one of the implemented algorithms.
-Consult the output of `test.py --help` to learn how to use the script.
+You can use the `algorithms.scripts.test` module to quickly generate an input
+list of some kind and display the result of executing one of the implemented
+algorithms.
+Consult the output of `python -m algorithms.scripts.test --help` to learn how
+to use the script.
 
 ```
-> ./test.py --input best --length 1000 median_heaps
+> python -m algorithms.scripts.test --input best --length 1000 median_heaps
 499.5
 ```
 
 ```
-> ./test.py --input worst --length 10 quicksort_random
+> python -m algorithms.scripts.test --input worst --length 10 quicksort_random
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
@@ -76,27 +78,22 @@ Plotting
 --------
 
 You can generate similar plots you might've seen at
-https://tensin.name/sorting-algorithms/ using "plot.py".
-Consult the output of `plot.py --help` to learn how to use the script.
+https://tensin.name/sorting-algorithms/ using the `algorithms.scripts.plot`
+module.
+Consult the output of `python -m algorithms.scripts.plot --help` to learn how
+to use the script.
 
 ```
-> ./plot.py merge_sort --min 0 --max 200 --input best --iterations 1000
+> python -m algorithms.scripts.plot merge_sort --min 0 --max 200 --input best --iterations 1000
 ```
 
 ```
-> ./plot.py median_sorting --min 0 --max 200 --input average --iterations 100 --output median_sorting.png
+> python -m algorithms.scripts.plot median_sorting --min 0 --max 200 --input average --iterations 100 --output median_sorting.png
 ```
 
 If you're having problems using the script (like having excessive noise in the
 measurement results), try minimizing background activity of your OS and
 applications.
-For example, on Windows 8.1 I got very reasonable plots after booting into Safe
-Mode and running the script with a higher priority while also setting its CPU
-affinity:
-
-```
-> start /affinity 1 /realtime plot.py ...
-```
 
 License
 -------
