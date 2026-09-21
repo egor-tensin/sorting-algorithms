@@ -2,7 +2,7 @@
 
 # Copyright (c) 2019 Egor Tensin <egor@tensin.name>
 # This file is part of the "Sorting algorithms" project.
-# For details, see https://github.com/egor-tensin/sorting-algorithms.
+# For details, see https://github.com/egor-tensin/sorting-algorithms
 # Distributed under the MIT License.
 
 set -o errexit -o nounset -o pipefail
