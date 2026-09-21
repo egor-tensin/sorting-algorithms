@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright (c) 2015 Egor Tensin <Egor.Tensin@gmail.com>
+# Copyright (c) 2015 Egor Tensin <egor@tensin.name>
 # This file is part of the "Sorting algorithms" project.
 # For details, see https://github.com/egor-tensin/sorting-algorithms.
 # Distributed under the MIT License.

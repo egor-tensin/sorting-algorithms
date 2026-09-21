@@ -1,4 +1,4 @@
-@rem Copyright (c) 2015 Egor Tensin <Egor.Tensin@gmail.com>
+@rem Copyright (c) 2015 Egor Tensin <egor@tensin.name>
 @rem This file is part of the "Sorting algorithms" project.
 @rem For details, see https://github.com/egor-tensin/sorting-algorithms.
 @rem Distributed under the MIT License.
